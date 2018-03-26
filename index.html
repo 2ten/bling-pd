@@ -1,0 +1,2704 @@
+
+
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]> <html lang="en" id="top" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" id="top" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" id="top" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" id="top" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" id="top" class="no-js"> <!--<![endif]-->
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(){}function o(e,t,n){return function(){return i(e,[f.now()].concat(u(arguments)),t?null:this,n),t?void 0:this}}var i=e("handle"),a=e(2),u=e(3),c=e("ee").get("tracer"),f=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,t){s[t]=o(d+t,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,o="function"==typeof t;return i(l+"tracer",[f.now(),e,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return t.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],n),e}finally{c.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=o(l+t)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,f.now()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(o<0?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],4:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?c(e,u,i):i()}function n(n,r,o,i){if(!d.aborted||i){e&&e(n,r,o);for(var a=t(o),u=m(n),c=u.length,f=0;f<c;f++)u[f].apply(a,r);var p=s[y[n]];return p&&p.push([b,n,r,a]),a}}function l(e,t){v[e]=m(e).concat(t)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(n)}function g(e,t){f(e,function(e,n){t=t||"feature",y[n]=t,t in s||(s[t]=[])})}var v={},y={},b={on:l,emit:n,get:w,listeners:m,context:t,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",c=e("gos"),f=e(2),s={},p={},d=t.exports=o();d.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=h.info=NREUM.info,t=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return s.abort();f(y,function(t,n){e[t]||(e[t]=n)}),c("mark",["onload",a()+h.offset],null,"api");var n=d.createElement("script");n.src="https://"+e.agent,t.parentNode.insertBefore(n,t)}}function o(){"complete"===d.readyState&&i()}function i(){c("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),c=e("handle"),f=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=t.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+<title>Bling Jewelry Customizer</title>
+<meta name="description" content="PD" />
+<meta name="keywords" content="bling jewelry, sterling silver jewelry, cz jewelry, cubic zirconia jewelry, fine jewelry, fashion jewelry, Costume Jewelry,Antique Costume Jewelry,Discount Celebrity, Bling jewelry,Blingjewelry.com,lookalike jewelry,costume jewellery,cheap jewelry,promise rings,cheap bling,ice brand designer watches,bridal earrings,cz teardrop earrings,pave bridal earring,link costume,pearl engagement rings" />
+<meta name="robots" content="INDEX,FOLLOW" />
+<link rel="icon" href="http://dev.blingjewelry.com/media/favicon/default/favicon_1.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://dev.blingjewelry.com/media/favicon/default/favicon_1.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#9f00a7">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = 'http://dev.blingjewelry.com/js/blank.html';
+    var BLANK_IMG = 'http://dev.blingjewelry.com/js/spacer.gif';
+//]]>
+</script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/js/calendar/calendar-win2k-1.css" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/js/prototype/windows/themes/default.css" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/js/mageworx/lightbox/css/lightbox.css" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/base/default/css/amasty/ampromo/styles.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/css/magestore/rewardpoints.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/css/magestore/rewardpoints_new.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/css/magestore/transactionpoint.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/css/mageworx/modalbox.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/base/default/css/icart.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/css/magestore/rewardpointsbehavior.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/css/rewardpointsreferfriends/referfriends.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/base/default/css/oro/ajax.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/base/default/lib/prototype/windows/themes/magento.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/css/gomage/productdesigner.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/base/default/css/mageworx/customoptions/customoptions.css" media="all" />
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/lib/jquery/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/lib/jquery/noconflict.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/prototype/prototype.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/lib/ccard.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/prototype/validation.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/scriptaculous/builder.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/scriptaculous/effects.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/scriptaculous/dragdrop.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/scriptaculous/controls.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/scriptaculous/slider.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/varien/js.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/varien/form.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/mage/translate.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/mage/cookies.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/magestore/rewardpoints.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/mageworx/modalbox.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/mageworx/icart.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/varien/product.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/calendar/calendar.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/calendar/calendar-setup.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/prototype/window.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/varien/product_options.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/gomage/productdesigner/vendor/fabric.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/gomage/productdesigner/vendor/excanvas.compiled.js"></script>
+<script type="text/javascript" src="productdesigner.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/gomage/productdesigner/prototype/prototype.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/gomage/productdesigner/varien/product.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/mageworx/lightbox/js/lightbox.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/js/mageworx/tagtip.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/lib/modernizr.custom.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/lib/selectivizr.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/lib/matchMedia.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/lib/matchMedia.addListener.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/lib/enquire.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/app.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/lib/imagesloaded.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/minicart.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/lib/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/lib/owl.carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/lib/slick/slick.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/lib/blazy.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/lib/jquery.viewport.mini.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/bundle.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/base/default/js/oro/ajax.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/js/jquery.selectBoxIt.min.js"></script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700" />
+<link rel="stylesheet" href="//www.blingjewelry.com/skin/frontend/rwd/blingjewelry/css/icons.css" />
+<link href="http://dev.blingjewelry.com/blog/rss/index/store_id/1/" title="Blog" rel="alternate" type="application/rss+xml" />
+<link rel="canonical" href="http://dev.blingjewelry.com/catalog/product/view/id/23496/s/gomage-test/" />
+<!--[if  (lte IE 8) & (!IEMobile)]>
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/css/styles-ie8.css" media="all" />
+<![endif]-->
+<!--[if (gte IE 9) | (IEMobile)]><!-->
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/css/styles.css" media="all" />
+<!--<![endif]-->
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/css/mageworx/modalbox-ie.css" media="all" />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="http://dev.blingjewelry.com/js/mageworx/lightbox/css/lightbox-ie.css" />
+<![endif]-->
+
+<script type="text/javascript">
+//<![CDATA[
+Mage.Cookies.path     = '/';
+Mage.Cookies.domain   = '.blingjewelry.com';
+//]]>
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+<script type="text/javascript">
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+</script>
+<!-- Nosto Javascript Stub -->
+<script type="text/javascript">
+    (function(){var name="nostojs";window[name]=window[name]||function(cb){(window[name].q=window[name].q||[]).push(cb);};})();
+</script>
+<!-- Facebook Ads Extension for Magento -->
+<!-- NO Pixel ID is configurated, please goto Admin -->
+<script>
+ console.log('No facebook pixel is configured, please log in as a admin and then visit Facebook Marketing Solution -> Pixel Setup');
+</script>
+
+        <style type="text/css" data-photoslurp-css-id="ps_container6">
+                    </style>
+        <style type="text/css" data-photoslurp-css-id="ps_container7">
+            
+#ps_container7 .ps-note-add-pics-submit {color: #FF2970}        </style>
+        <style type="text/css" data-photoslurp-css-id="ps_container9">
+                    </style>
+
+<script type="text/javascript">//<![CDATA[
+        var Translator = new Translate({"This is a required field.":"<span>This is a required field.<\/span>","Please enter a valid email address. For example johndoe@domain.com.":"Valid email please","Add to Cart":"Add to Bag"});
+        //]]></script><script>
+var _prum = [['id', '540f16e1abe53db001ea5eb7'],
+             ['mark', 'firstbyte', (new Date()).getTime()]];
+(function() {
+    var s = document.getElementsByTagName('script')[0]
+      , p = document.createElement('script');
+    p.async = 'async';
+    p.src = '//rum-static.pingdom.net/prum.min.js';
+    s.parentNode.insertBefore(p, s);
+})();
+</script>
+<style>
+.cms-home .ps-container{
+margin-left:auto;
+margin-right:auto;
+}
+</style>
+<style>
+.ps-note-add-pics { display: none; }
+</style>
+
+
+
+
+<meta property="og:site_name" content="BlingJewelry.com"/>
+<meta property="og:title" content="GoMage Test | Bling Jewelry"/>
+<meta property="og:type" content="product"/>
+<meta property="og:price:amount" content="5" />
+<meta property="og:price:currency" content="USD" />
+<meta property="og:availability" content="instock" />
+<meta property="product:color" content="" >
+<meta property="og:url" content="http://dev.blingjewelry.com/designer/?id=23496"/>
+<meta property="og:image" content="http://dev.blingjewelry.com/media/catalog/product/cache/1/small_image/768x768/9df78eab33525d08d6e5fb8d27136e95/b/l/bling-sample-eng_1.jpg"/>
+<meta property="og:description" content="PD"/>
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@blingjewelry">
+<meta name="twitter:creator" content="@blingjewelry">
+<meta name="twitter:title" content="GoMage Test Bling Jewelry">
+<meta name="twitter:description" content="PD">
+<meta name="twitter:image" content="http://dev.blingjewelry.com/media/catalog/product/cache/1/small_image/768x768/9df78eab33525d08d6e5fb8d27136e95/b/l/bling-sample-eng_1.jpg">
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "Bling Jewelry",
+  "url": "http://www.blingjewelry.com",
+  "logo": "http://www.blingjewelry.com/skin/frontend/rwd/blingjewelry/images/logo.png",
+  "contactPoint" : [{
+    "@type" : "ContactPoint",
+    "telephone" : "+1-800-434-9905",
+    "contactType" : "customer service",
+    "contactOption" : "TollFree",
+    "areaServed" : "US"
+  },{
+    "@type" : "ContactPoint",
+    "telephone" : "+1-212-683-1746",
+    "contactType" : "customer service"
+  }],
+  "sameAs" : [
+    "http://www.facebook.com/blingjewelry.com",
+    "http://twitter.com/blingjewelry",
+    "http://www.pinterest.com/blingjewelry",
+    "http://instagram.com/blingjewelry",
+    "https://plus.google.com/106417105911025195522",
+    "http://wanelo.com/blingjewelry",
+    "http://blingjewelry.polyvore.com/"
+  ]
+}
+{
+   "@context": "http://schema.org",
+   "@type": "WebSite",
+   "url": "http://dev.blingjewelry.com/",
+   "potentialAction": {
+     "@type": "SearchAction",
+     "target": "http://dev.blingjewelry.com/salesperson/result/?q={search_term_string}",
+     "query-input": "required name=search_term_string"
+   }
+}
+</script>
+<script type="text/javascript">
+    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+      heap.load("1791303687");
+</script></head>
+<body class=" gomage-designer-index-index">
+<!-- BEGIN: Google Trusted Store -->
+<script type="text/javascript">
+//<![CDATA[
+  var gts = gts || [];
+
+  gts.push(["id", "22425"]);
+  gts.push(["badge_position", "BOTTOM_RIGHT"]);
+  gts.push(["locale", "en_US"]);
+
+  gts.push(["google_base_offer_id", ""]);
+  gts.push(["google_base_country", "US"]);
+  gts.push(["google_base_language", "en"]);
+
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+//]]>
+</script>
+<!-- END: Google Trusted Store -->
+ 
+
+ <!-- Ecomm Data Layer -->
+<script type="text/javascript">
+    ecomm_data = {"site_region":"en_US","site_currency":"USD","page_name":"Bling Jewelry Customizer","page_type":"generic","customer_email":""};
+</script>
+<!-- ######################################### --><script type="text/javascript">
+var ajaxController = new oroAjax({
+    formKey: '0SN4bUZ539cWhwCQ',
+    statusUrl: 'http://dev.blingjewelry.com/ajax/status/',
+    updaters: [{key:'minicart_header',rule:{css:'.header-top .header-minicart a'}},{key:'minicart_header',rule:{css:'#header .header-minicart a'}},{key:'minicart_content',rule:{id:'header-cart'}}]
+});
+</script>
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-54ZFV8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-54ZFV8');</script><div class="wrapper">
+        <noscript>
+        <div class="global-site-notice noscript">
+            <div class="notice-inner">
+                <p>
+                    <strong>JavaScript seems to be disabled in your browser.</strong><br />
+                    You must have JavaScript enabled in your browser to utilize the functionality of this website.                </p>
+            </div>
+        </div>
+    </noscript>
+    <div class="page">
+        
+ <style>
+
+/* wysiwyg */
+.top-notification{background-color:#C90017 ;color:#ffffff;z-index:200;font-size:13px}
+.top-notification a{color:#fff;text-decoration:underline white}
+.top-notification__text{width:100%;text-align:center}
+.top-notification__desktop-text{display:none;text-align:center}
+
+/* add to css */
+.top-notification{padding:5px 0;width:100%;z-index:200;}
+
+@media only screen and (min-width:768px){
+	/* wysiwyg */
+	.top-notification__mobile-text{display:none}
+	.top-notification__desktop-text{display:block;text-align:center;font-size:16px;}
+	.top-container{padding:0 0 6px 0!important}
+}
+.top-top{
+background:#333;color:#fff;font-size:14px;font-weight:bold;text-align:center;padding:5px;text-align:center;
+}
+.top-top span{
+display:none;
+}
+@media only screen and (min-width:768px){
+.top-top{
+font-size:16px;
+}
+.top-top span{
+display:inline;
+}
+}
+</style>
+<div style="" class="top-top">
+7 Days Left&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FREE SHIPPING for Christmas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:13px;font-weight:normal">Cut off Wed 12/13 11AM EST</span>
+</div>
+<div class="top-notification">
+<div class="top-notification__text">
+<div class="top-notification__desktop-text">
+<strong>CYBER WEEK DEALS EXTENDED </strong> &nbsp;&nbsp; <strong>$15 OFF</strong> on $75 Use Code <strong style="background-color: #000000">GIFT15</strong> &nbsp;&nbsp; + &nbsp;&nbsp; <strong>$20 OFF</strong> on $100 Use Code <strong style="background-color: #000000">GIFT20</strong>
+</div>
+<div class="top-notification__mobile-text">
+<strong>CYBER WEEK DEALS EXTENDED </strong>&nbsp;&nbsp; <strong>$15 OFF</strong> on $75 Code <strong style="background-color: #000000">GIFT15</strong> &nbsp;&nbsp;  <br>+ <strong>$20 OFF</strong> on $100 Code <strong style="background-color: #000000">GIFT20</strong>
+</div>
+</div>
+</div><div class="header-top">
+    <div class="container">
+        <a class="logo" href="http://dev.blingjewelry.com/"><img src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/images/logo-tiny@2x.png" alt="Bling Jewelry" class="header-top-logo" width="175" height="22" /></a>
+        <div class="header-top-links">
+            <div class="header-minicart">
+                <a href="https://dev.blingjewelry.com/checkout/cart/" data-target-element="#header-cart" class="skip-link skip-cart">
+    <span class="label">Bag</span>
+    <span class="count">&nbsp;<span class="bag"></span></span>
+</a>
+            </div>
+            <a href="#header-account" class="skip-link skip-account">
+                <span class="label">Account</span>
+            </a>
+        </div>
+                <div class="phone">
+            <a href="tel:+1800-434-9905">800-434-9905</a>
+<a href="tel:+1212-683-1746"><span>Int'l</span> 212-683-1746</a>        </div>
+                <div class="promo">
+            <a href="http://dev.blingjewelry.com/rewardpoints-welcome/">
+                Bling Rewards            </a>
+        </div>
+        <div class="promo">
+            <a href="#" data-toggle="modal" data-target="#modal-subscribe">
+                Get 10% Off            </a>
+        </div>
+    </div>
+</div>
+<div class="js-header-top__push"></div>
+<header id="header" class="page-header">
+    <div class="page-header-wrap">
+        <div class="page-header-container">
+            
+
+            <div class="message">
+                <strong>Free US Shipping</strong> Over $25<br>Free and easy returns                            </div>
+            <a class="logo" href="http://dev.blingjewelry.com/">
+                <img src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/images/logo@2x.png" alt="Bling Jewelry" width="276" height="52" class="large" />
+                <img src="http://dev.blingjewelry.com/skin/frontend/rwd/blingjewelry/images/logo_small@2x.png" alt="Bling Jewelry" width="195" height="25" class="small" />
+
+            </a>
+                        <!-- Skip Links -->
+            <div class="skip-links">
+                <a href="#header-nav" class="skip-link skip-nav">
+                    <span class="icon"></span>
+                    <span class="label">Menu</span>
+                </a>
+                <a href="#header-search" class="skip-link skip-search">
+                    <span class="icon"></span>
+                    <span class="label">Search</span>
+                </a>
+                <a href="#" class="skip-link skip-promo" data-toggle="modal" data-target="#modal-subscribe">
+                    <span class="label">Get 10% Off</span>
+                </a>
+                                <!-- Cart -->
+                <div class="header-minicart">
+                    <a href="https://dev.blingjewelry.com/checkout/cart/" data-target-element="#header-cart" class="skip-link skip-cart">
+    <span class="label">Bag</span>
+    <span class="count">&nbsp;<span class="bag"></span></span>
+</a>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div id="header-search" class="skip-content">
+                <div class="header-search__wrap"> 
+<div class="header-search__close"><a href="#">&times;</a></div>
+
+<form id="search_mini_form" action="http://dev.blingjewelry.com/salesperson/result/" method="get">
+    <div class="form-search input-box">
+        <label for="search">Search:</label>
+        <div class="search__wrap">
+        <input id="search" type="text" autocomplete="off" name="q" value="" placeholder="Search for Bling" class="input-text" /></div>
+        <button type="submit" title="Search" class="button search-button"><span><span>Search</span></span></button>
+		<div id="search_autocomplete" class="search-autocomplete"></div>
+
+					<script type="text/javascript" src="//blingjewelry-ac.celebros.com/AutoComplete/Scripts/CelebrosAutoCompleteV2.js"></script>
+			<script type="text/javascript">
+			//<![CDATA[
+				window.CelebrosAutoComplete&&
+				CelebrosAutoComplete("BlingJew", "search",  onSelect, "blingjewelry-ac.celebros.com", "blingjewelry-ac.celebros.com");
+				function onSelect(aParameter)
+				{ 
+					if ((aParameter["SelectedURL"]!="") &&(aParameter["IsAutoComplete"]))
+					{	
+						var sCmp = (aParameter["SelectedURL"].indexOf("?") == -1) ? "?" : "&";
+						window.location = aParameter["SelectedURL"] + sCmp + "cmp=cel";
+					}
+					else
+					{ 
+						window.location="http://dev.blingjewelry.com/salesperson/result/?q="+escape(aParameter["SelectedQuery"]);	
+					}
+				}
+				var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search for Bling');             
+			//]]>
+			</script>					
+				
+    </div>
+</form>
+</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+$j('document').ready(function(){
+    $j('.header-search__close a').on('click touchstart', function(e){
+        $j('#header-search,.skip-search').removeClass('skip-active');
+        $j('.header-search__overlay').remove();
+        e.stopPropagation();
+        e.preventDefault();
+    })
+    $j('input#search').on('focus', function(){
+        $j('#header-search').addClass('search-focus');
+    }).on('blur', function(){
+        $j('#header-search').removeClass('search-focus');
+    })
+    // $j('.skip-search').on('click touchend', function(){
+    // 	//$j('<div class="header-search__close"><a href="#">&times;</a></div>').appendTo('.page-header-container');
+    // })
+
+})
+//]]>
+</script>            </div>
+
+            <!-- Account -->
+            <div id="header-account" class="skip-content affix-top">
+                <div class="links">
+        <ul>
+                                    <li class="first" ><a href="https://dev.blingjewelry.com/customer/account/create/" title="Register" >Register</a></li>
+                                                <li class=" last" ><a href="#" title="Login" class="login-link">Login</a></li>
+                        </ul>
+</div>
+            </div>
+
+            <!-- Cart -->
+            <div id="header-cart" class="block block-cart skip-content header-minicart affix-top">
+                            </div>
+            
+        </div>
+    </div>
+    <!-- Navigation -->
+    <div class="modal-backdrop fade menu-modal"></div>
+    <div id="header-nav" class="js-header-nav">
+        <div class="mobile-nav-header">
+            <a href="#" class="login-link">Login</a>
+            <button type="button" class="close" id="nav-close">×</button>
+        </div>
+        <div class="container">
+            
+    <nav id="nav">
+        <ol class="nav-primary">
+            <li class="level0 nav-1 parent first"><a href="#
+" class="level0 has-children"><span>Shop Women</span></a><ul class="level0 megamenu mega">
+<li>
+<div class="sidelinks">
+    <h3></h3>
+	<ul>
+                <li><a href="http://dev.blingjewelry.com/ayllu">Ayllu Exclusive</a></li> 
+                <li><a href="http://dev.blingjewelry.com/new-arrivals.html">NEW Arrival</a></li>
+                <li><a href="http://dev.blingjewelry.com/bundle-and-save.html">Bundle & Save</a></li>
+             	<li><a href="http://dev.blingjewelry.com/engraved-jewelry.html">Personalize It</a></li>
+		<li><a href="http://dev.blingjewelry.com/best-selling-jewelry.html">Best Sellers</a></li>
+		<li><a href="http://dev.blingjewelry.com/bracelet-charm-beads.html">Pandora-compatible Charms</a></li>
+	</ul>
+	<div class="block-promo"><a href="http://dev.blingjewelry.com/view-all-rings/engagement-rings.html"> 
+	    <img src="/media/wysiwyg/blingv2/make-her-say-yes-shop-engagement-rings.jpg" width="296" height="374" alt="Deal"></a>
+	</div>
+</div>
+<div class="mainlinks">
+	<ul>
+		<li class="col">
+			<h3><a href="http://dev.blingjewelry.com/sterling-silver-rings.html">Rings</a></h3>
+			<ul>
+                                <li><a href="http://dev.blingjewelry.com/view-all-rings/engagement-rings.html">Engagement</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-rings/wedding-ring-sets.html">Ring Sets</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-rings/wedding-bands.html">Bands</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-rings/eternity-rings.html">Eternity</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-rings/cocktail-rings.html">Cocktail</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-rings/sterling-silver-toe-ring-midi-knuckle-ring.html">Midi, Toe Rings</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-rings/best-selling-rings.html">Best Rings</a></li>				
+				<li><a href="http://dev.blingjewelry.com/view-all-rings.html">View All Rings</a></li>
+			</ul>
+		</li>
+		<li class="col">
+			<h3><a href="http://dev.blingjewelry.com/sterling-silver-earrings.html">Earrings</a></h3>
+			<ul>
+				<li><a href="http://dev.blingjewelry.com/view-all-earrings/stud-earrings.html">Stud</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-earrings/hoop-earrings.html">Hoops & Huggies</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-earrings/chandelier-earrings.html">Chandelier</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-earrings/ear-cuffs.html">Cuffs, Jackets, Pins</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-earrings/fashion-earrings.html">Fashion</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-earrings/clip-on-earrings.html">Clip On</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-earrings/best-selling-earrings.html">Best Earrings</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-earrings.html">View All Earrings</a></li>
+			</ul>
+		</li>
+		<li class="col">
+			<h3><a href="http://dev.blingjewelry.com/bracelets.html">Bracelets</a></h3>
+			<ul> 
+				<li><a href="http://dev.blingjewelry.com/view-all-bracelets/charm-bracelets.html">Charm - Beads</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-bracelets/cubic-zirconium-tennis-bracelets.html">Tennis</a></li>
+                                <li><a href="http://dev.blingjewelry.com/view-all-bracelets/cuff-bracelets.html">Cuff - Bangle</a></li>
+                                <li><a href="http://dev.blingjewelry.com/view-all-bracelets/leather-bracelets.html">Leather</a></li>
+                                <li><a href="http://dev.blingjewelry.com/view-all-bracelets/identification-bracelets.html">ID</a></li>				
+				<li><a href="http://dev.blingjewelry.com/view-all-bracelets/ankle-bracelets.html">Anklet</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-bracelets/best-selling-bracelets.html">Best Bracelets</a></li>
+                                <li><a href="http://dev.blingjewelry.com/view-all-bracelets.html">View All Bracelets</a></li>
+			</ul>
+		</li>
+		<li class="col">
+			<h3><a href="http://dev.blingjewelry.com/necklaces.html">Necklaces</a></h3>
+			<ul>
+				<li><a href="http://dev.blingjewelry.com/view-all-necklaces-pendants/best-sellers-necklaces.html">Best Necklaces</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-necklaces-pendants/sterling-silver-pendants.html">Pendant - Necklaces</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-necklaces-pendants/statement-necklaces.html">Statement</a></li>
+          			<li><a href="http://dev.blingjewelry.com/view-all-necklaces-pendants/chain-necklace.html">Chains</a></li>				
+				<li><a href="http://dev.blingjewelry.com/view-all-necklaces-pendants/lockets.html">Lockets</a></li>
+                                <li><a href="http://dev.blingjewelry.com/view-all-necklaces-pendants/cz-diamonds-tennis-necklaces.html">Tennis</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-necklaces-pendants/religious-pendants.html">Spiritual</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-necklaces-pendants/pearl-necklace.html">Pearl</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-necklaces-pendants.html">View All Necklaces</a></li>
+			</ul>
+		</li>
+		<li class="col">
+			<h3><a href="http://dev.blingjewelry.com/bracelet-charm-beads.html">Charms</a></h3>
+			<ul>
+				<li><a href="http://dev.blingjewelry.com/bracelet-charm-beads.html">View All Charms</a></li>
+				<li><a href="http://dev.blingjewelry.com/pandora-compatible-bead-jewelry/pandora-style-bead-bracelets.html">Pre Design Bracelets</a></li>
+                               <li><a href="http://dev.blingjewelry.com/pandora-compatible-bead-jewelry/sterling-silver-clasp-spacer-beads.html">Stopper & Clasp</a></li>
+				<li><a href="http://dev.blingjewelry.com/pandora-compatible-bead-jewelry/sterling-silver-bead-sets.html">Bundle Bead Sets</a></li>
+				<li><a href="http://dev.blingjewelry.com/pandora-compatible-bead-jewelry/best-seller-charms-beads.html">Top Charms</a></li>
+				<!--li><a href="http://dev.blingjewelry.com/bracelet">Bead Builder</a></li-->
+			</ul>
+		</li>
+		<li class="col">
+			<h3><a href="http://dev.blingjewelry.com/view-all-mens-womens-kids-watches.html">Watches</a></h3>
+			<ul>
+				<li><a href="http://dev.blingjewelry.com/view-all-mens-womens-kids-watches/womens-watches.html">Womens</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-mens-womens-kids-watches/kids-watches.html">Kids</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-mens-womens-kids-watches/novelty-watches.html">Pocket - Novelty</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-mens-womens-kids-watches.html">View All Watches</a></li>
+			</ul>
+		</li>
+		<li class="col">
+			<h3><a href="http://dev.blingjewelry.com/body-jewelry-collection.html">Body Jewelry</a></h3>
+			<ul>
+				<li><a href="http://dev.blingjewelry.com/belly-rings.html">Belly Rings</a></li>
+                                <li><a href="http://dev.blingjewelry.com/body-jewelry/ear-piercing.html">Ear Piercing</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-bracelets/ankle-bracelets.html">Anklets</a></li>
+				<li><a href="http://dev.blingjewelry.com/view-all-rings/sterling-silver-toe-ring-midi-knuckle-ring.html">Toe Rings</a></li>
+				<!-- <li><a href="http://dev.blingjewelry.com/view-all-earrings/ear-cuffs.html">Ear Cuffs</a></li> -->
+			</ul>
+		</li>
+		<li class="col">
+			<h3><a href="http://dev.blingjewelry.com/view-all-sterling-silver-accessories-evening-bags.html">Others</a></h3>
+			<ul>
+				<li><a href="http://dev.blingjewelry.com/view-all-sterling-silver-accessories-evening-bags/hair-accessories-wedding-tiaras.html">Tiara</a></li>
+				<li><a href="http://dev.blingjewelry.com/pins-brooches.html">Pins & Brooches</a></li>
+				<li><a href="http://dev.blingjewelry.com/sterling-silver-jewelry-sets.html">Jewelry Sets</a></li>
+			        <li><a href="http://dev.blingjewelry.com/children-jewelry.html">Childrens Jewelry</a></li> 
+			</ul>
+		</li>
+	</ul>
+</div>
+</li>
+</ul></li><li class="level0 nav-2 parent"><a href="#
+" class="level0 has-children"><span>Shop Men</span></a><ul class="level0 megamenu megamenu-2col megamenu-withpromo">
+<li>
+<div class="links">
+<ul>
+<li><a href="http://dev.blingjewelry.com/view-all-rings/mens-rings-wedding-bands.html">Rings</a></li>
+<li><a href="http://dev.blingjewelry.com/view-all-earrings/sterling-silver-mens-earrings.html">Earrings</a></li>
+<li><a href="http://dev.blingjewelry.com/view-all-mens-womens-kids-watches/mens-watches.html">Watches</a></li>
+<li><a href="http://dev.blingjewelry.com/view-all-sterling-silver-accessories-evening-bags/cufflinks.html">Cufflinks</a></li>
+<li><a href="http://dev.blingjewelry.com/view-all-sterling-silver-accessories-evening-bags/money-clips-key-rings.html">Money Clip & Key Ring</a></li>
+<li><a href="http://dev.blingjewelry.com/mens-jewelry.html">View All</a></li>
+</ul>
+</div>
+
+<div class="links">
+<ul>
+<li><a href="http://dev.blingjewelry.com/view-all-necklaces-pendants/mens-necklaces.html">Chains & Pendants</a></li>
+<li><a href="http://dev.blingjewelry.com/view-all-necklaces-pendants/dog-tags-necklace.html">Dog Tags</a></li>
+<li><a href="http://dev.blingjewelry.com/view-all-bracelets/mens-bracelets-bangles.html">Bracelets</a></li>
+<li><a href="http://dev.blingjewelry.com/view-all-bracelets/identification-bracelets.html">ID Bracelets</a></li>
+<li><a href="http://dev.blingjewelry.com/view-all-bracelets/shamballa-bracelets.html">Shamballa Inspired</a></li>
+<li><a href="http://dev.blingjewelry.com/view-all-mens-jewelry/mens-leather-bracelets.html">Leather Bracelets</a></li>
+<li><a href="http://dev.blingjewelry.com/children-jewelry/boys-jewelry.html">Kids Boys</a></li>
+</ul>
+</div>
+
+
+<div class="block-promo"><a href="http://dev.blingjewelry.com/mens-jewelry.html"><img src="/media/wysiwyg/blingv2/shop-mens-2-17.jpg" alt="Men Jewelry" /></a></div>
+</li>
+</ul></li><li class="level0 nav-3 parent"><a href="#
+" class="level0 has-children"><span>Gifts</span></a><ul class="level0 megamenu megamenu-2col megamenu-withpromo">
+	<li>
+		<div class="links">
+    		<h3>Gifts</h3>
+			<ul>
+				<!-- <li><a href="http://dev.blingjewelry.com/holiday-gifts.html">Holiday Gift Guide</a></li>				
+                                <li><a href="http://dev.blingjewelry.com/jewelry-under-9-99.html">Stocking Stuff under $21</a></li>	-->
+				<li><a href="http://dev.blingjewelry.com/gifts-for-her.html">Gifts for Her</a></li>
+				<li><a href="http://dev.blingjewelry.com/gifts-for-him.html">Gifts for Him</a></li>
+				<li><a href="http://dev.blingjewelry.com/children-jewelry.html">Gifts for Kids</a></li>
+				<li><a href="http://dev.blingjewelry.com/engraved-jewelry.html">Personalize It</a></li>
+				<li><a href="http://dev.blingjewelry.com/bling-jewelry-e-gift-certificate.html">Gift Certificate</a></li>
+			</ul>
+		</div>
+		<div class="links">
+		    <h3>Shop Holidays</h3>
+			<ul>
+                                <li>
+					<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/easter-gifts.html">
+						Easter
+					</a>
+				</li>
+                                <li>
+					<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/mothers-day-jewelry.html">
+						Mothers Day
+					</a>
+				</li>
+                                <li>
+					<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/fathers-day-jewelry.html">
+						Fathers Day
+					</a>
+				</li>
+                                <li>
+					<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/halloween-jewelry.html">
+						Halloween
+					</a>
+				</li>
+				<li>
+					<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/patriotic-jewelry.html">
+						Patriotic
+					</a>
+				</li>
+                                <li>
+					<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/view-all-christmas-jewelry.html">
+						Christmas
+					</a>
+				</li>
+				<li>
+					<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/hanukkah-passover-jewelry.html">
+						Hanukkah
+					</a>
+				</li>
+				<li>
+					<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/party-jewelry.html">
+						New Year
+					</a>
+				</li>
+                               <li>
+					<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/valentines-jewelry.html">
+						Valentines Day
+					</a>
+				</li>		
+                                <li>
+					<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/st-patricks-day-jewelry.html">
+						St. Patricks Day
+					</a>
+				</li>	
+			</ul>
+		</div>
+		<div class="block-promo"><a href="http://dev.blingjewelry.com/view-all-birthstone-jewelry/april-birthstone-cz-diamond.html"><img src="/media/wysiwyg/blingv2/gifts/april-birthstone-diamond-cz.jpg" alt="April Jewelry" /></a></div>
+	</li>
+</ul></li><li class="level0 nav-4 parent"><a href="#
+" class="level0 has-children"><span>Collections</span></a><ul class="level0 megamenu megamenu-3col">
+<li>
+<div class="links">
+    <h3>Theme</h3>
+<ul>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/inspirational-jewelry.html">
+		Inspirational Messages
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/angel-jewelry.html">
+		Angels
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/spiritual-jewelry.html">
+		Spiritual
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/sterling-silver-cz-vintage-jewelry-c-302.html">
+		Vintage
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/best-friend-jewelry.html">
+		Best Friend
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/bridal-jewelry.html">
+		Bridal
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/animal-jewelry.html">
+		Animal
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/spring-theme-jewelry.html">
+		Nature
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/sport-theme-jewelry.html">
+		Sports
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/anchor-jewelry.html">
+		Nautical
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/goth-jewelry.html">
+		Biker Rocker
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/kate-middleton-jewelry-c-371.html">
+		Kate Royal Style
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/breast-cancer-awareness-jewelry.html">
+		Cancer Awareness
+	</a>
+</li>
+</ul>
+</div>
+<div class="links">
+    <h3>Shape It</h3>
+<ul>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/infinity-jewelry.html">
+		<i class="icon-infinity"></i>Infinity
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/heart-shaped-jewelry.html">
+		<i class="icon-heart"></i>Heart
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/ribbon-bow-jewelry.html">
+		<i class="icon-ribbon"></i>Ribbon Bow
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/cross-pendants-necklaces-c-289.html">
+		<i class="icon-cross"></i>Cross
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/love-knot-jewelry.html">
+		<i class="icon-knot"></i>Knot
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/star-jewelry.html">
+		<i class="icon-star"></i>Star
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/key-jewelry.html">
+		<i class="icon-key"></i>Key
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-necklaces-pendants/baby-shoe-charms.html">
+		<i class="icon-baby-shoe"></i>Baby Shoe
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/flower-jewelry.html">
+		<i class="icon-flower"></i>Flower
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/handcuff-jewelry.html">
+		<i class="icon-handcuff"></i>Handcuff
+	</a>
+</li>
+
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/skull-jewelry.html">
+		<i class="icon-skull"></i>Skull
+	</a>
+</li>
+<li>
+	<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/snowflake-jewelry.html">
+		<i class="icon-snowflake"></i>Snowflake
+	</a>
+</li>
+</ul>
+</div>
+
+<div class="links">
+    <h3>Live in the Moments</h3>
+<ul>
+                        <li>
+				<a href="http://dev.blingjewelry.com/birthstone-jewelry.html">
+					Birthstone
+				</a>
+			</li> 
+			<li>
+				<a href="http://dev.blingjewelry.com/view-all-rings/engagement-rings.html">
+					Engagement
+				</a>
+			</li>
+                        <li>
+				<a href="http://dev.blingjewelry.com/bridal-jewelry.html">
+					Wedding
+				</a>
+			</li> 
+			<li>
+				<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/anniversary-jewelry.html">
+					Anniversary
+				</a>
+			</li>
+                        <li>
+				<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/love-knot-jewelry.html">
+					First Date
+				</a>
+			</li>
+			<li>
+				<a href="http://dev.blingjewelry.com/children-jewelry.html">
+					Baby Gifts
+				</a>
+			</li>
+  			<li>
+				<a href="http://dev.blingjewelry.com/red-carpet-jewelry.html">
+					Red Carpet
+				</a>
+			</li>
+                        <li>
+				<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/graduation-jewelry.html">
+					Graduation
+				</a>
+			</li>
+			<li>
+				<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/party-jewelry.html">
+					Prom
+				</a>
+			</li>
+                        <li>
+				<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/back-to-school-jewelry.html">
+					Back to School
+				</a>
+			</li> 
+                        <li>
+				<a href="http://dev.blingjewelry.com/view-all-theme-jewelry/summer-jewelry.html">
+					Vacation
+				</a>
+			</li>
+                        <li>
+				<a href="http://dev.blingjewelry.com/gifts-for-special-occasions/party-jewelry.html">
+					New Year
+				</a>
+			</li> 
+		</ul>
+</div>
+<!--
+<div class="block-promo"><a href="http://dev.blingjewelry.com/children-jewelry.html"><img src="/media/wysiwyg/blingv2/shop-gifts-kids-bling.jpg" alt="Kids Jewelry" /></a></div>
+-->
+</li>
+</ul></li><li class="level0 nav-5 parent"><a href="http://dev.blingjewelry.com/bling-jewelry-deals.html 
+" class="level0 "><span>Sale</span></a></li><li class="level0 nav-6 parent"><a href="http://dev.blingjewelry.com/charity-aclu.html
+" class="level0 "><span>Shop Charity</span></a></li><li class="level0 nav-7 parent"><a href="https://dev.blingjewelry.com/about-us-i-22.html
+" class="level0 "><span>Our Story</span></a></li><li class="level0 nav-8 parent last"><a href="http://dev.blingjewelry.com/contacts" class="level0 "><span>Help</span></a></li>        </ol>
+    </nav>
+        </div>
+    </div>
+    <div class="js-header-nav__push"></div>
+</header>
+<div class="top-container"><div class="mobile-header-message">Free US Shipping over $25 + Free Returns</div>
+<style>
+.mobile-header-message{
+    margin-top: -14px;
+    font-size: 11px;
+    height: 28px;
+    line-height: 28px;
+}
+@media(min-width:768px){
+.mobile-header-message{display:none;}
+}
+</style><style>
+.catalog-product-view .global-sale-banners{
+display:none;
+}
+
+@media(min-width:600px){
+.catalog-product-view .global-sale-banners{
+display:block;
+}
+}
+</style>
+
+<a href="http://dev.blingjewelry.com/bling-jewelry-deals.html" class="global-sale-banners"> 
+<img src="https://www.blingjewelry.com/media/wysiwyg/sale-on-sale-large-2-15.png" alt="Bling Jewelry After Christmas Sale" class="hidden-large hidden-medium hidden-small hidden-xsmall" />
+<img src="https://www.blingjewelry.com/media/wysiwyg/sale-on-sale-medium-2-15.png" alt="Bling Jewelry After Christmas Sale" class="hidden-xlarge hidden-medium hidden-small hidden-xsmall" />
+<img src="https://www.blingjewelry.com/media/wysiwyg/sale-on-sale-small-2-15.png" alt="Bling Jewelry After Christmas Sale"class="hidden-xlarge hidden-large hidden-small hidden-xsmall"  />
+<img src="https://www.blingjewelry.com/media/wysiwyg/sale-on-sale-xsmall-2-15.png" alt="Bling Jewelry After Christmas Sale" class="hidden-xlarge hidden-large hidden-medium" /></a></div>        <div class="main-container col1-layout">
+            <div class="main">
+                <div class="breadcrumbs">
+    <ul>
+                    <li class="home">
+                            <a href="http://dev.blingjewelry.com/" title="Go to Home Page">Home</a>
+                                        <span>/ </span>
+                        </li>
+                    <li class="product">
+                            <strong>GoMage Test</strong>
+                                    </li>
+            </ul>
+</div>
+                <div class="col-main">
+                                        
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice({"productId":"23496","priceFormat":{"pattern":"$%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":1},"includeTax":"false","showIncludeTax":false,"showBothPrices":false,"productPrice":5,"productOldPrice":5,"priceInclTax":5,"priceExclTax":5,"skipCalculate":1,"defaultTax":8.875,"currentTax":0,"idSuffix":"_clone","oldPlusDisposition":0,"plusDisposition":0,"plusDispositionTax":0,"oldMinusDisposition":0,"minusDisposition":0,"tierPrices":[],"tierPricesInclTax":[]});
+    function initProductDesigner() {
+        var settings = {};
+        settings.navigation = {
+            chooseProduct : $("pd_choose_product"),
+            addDesign : $("pd_add_design"),
+            addText : $("pd_add_text"),
+            addImage : $("pd_add_image"),
+            designGallery : $("pd_design_gallery"),
+            saveDesign: $("pd_save_design"),
+            continue : $('pd_gt_product'),
+            zoom: $('pd_zoom'),
+            share: $('pd_share')
+        };
+
+        settings.controls = {
+            undo: 'pd_undo',
+            redo: 'pd_redo',
+            flip_x: 'pd_flip_horizontal',
+            flip_y: 'pd_flip_vertical',
+            allign_by_center: 'pd_allign_by_center',
+            remove: 'pd_delete',
+            front: 'pd_front',
+            back: 'pd_back',
+        };
+
+        settings.colorAttributeId = 92;
+
+        settings.imageMinSize = {"width":"680","height":"800"};
+
+        settings.prices = {"fixed_price":"9","text_price":0,"image_text":0};
+        settings.isCustomerLoggedIn = '';
+        settings.isProductSelected = 1;
+        settings.isNavigationEnabled = 0;
+        settings.isDesignedEnabled = 0;
+        settings.isTextEnabled = 1;
+        settings.isUploadImageEnabled = 0;
+        settings.product = {"images":{"none_color":{"186160":{"t":205,"l":137,"w":132,"h":132,"image_id":"186160","ip":"0","form_key":"nRF3vBF2ya5FQHoT","id":"186160","u":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/400x400\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-front_1.jpg","d":[400,400],"orig_image":{"url":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/680x800\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-front_1.jpg","dimensions":["680","800"]},"ico":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/60x60\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-front_1.jpg","label":"Front"},"186161":{"t":200,"l":120,"w":164,"h":164,"image_id":"186161","ip":"5","form_key":"nRF3vBF2ya5FQHoT","id":"186161","u":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/400x400\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-back_1.jpg","d":[400,400],"orig_image":{"url":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/680x800\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-back_1.jpg","dimensions":["680","800"]},"ico":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/60x60\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-back_1.jpg","label":"Back"}}},"default_color":"none_color","url":"http:\/\/dev.blingjewelry.com\/catalog\/product\/view\/id\/23496\/s\/gomage-test\/","name":"GoMage Test"};
+        settings.container = $("pd_container");
+
+        window.pd = new GoMage.ProductDesigner(settings,
+            'http://dev.blingjewelry.com/designer/index/continue/',
+            'http://dev.blingjewelry.com/designer/customer/loginPost/',
+            'http://dev.blingjewelry.com/designer/customer/createPost/',
+            'http://dev.blingjewelry.com/designer/index/saveDesign/'
+        );
+    }
+    document.observe("dom:loaded", function(e){
+        initProductDesigner();
+    }.bind(this));
+</script>
+
+<div id="product-designer" class="product-designer">
+    <div id="designer-load-info" style="display: none;" class="page-loading-overlay">
+      <div class="designer-load-text">Loading, please wait</div>
+    </div>
+    <div class="product-designer-header">
+                <div class="pd-current-product">
+            <strong>Current Product:</strong>
+            <span id="pd_current_product_name" class="current-product-name">Not selected</span>
+
+            
+        </div>
+    </div>
+    <div class="product-designer-content">
+            
+      <div class="product-designer-main-col">
+
+        <div class="pd-container__wrap">
+          <div class="pd-container__wrap-inner">
+
+
+            <div class="pd-custom-wrapper">
+
+                                <div id="pd_sides" class="pd_sides pd-box">
+                                        <ul class="pd_sides_list">
+                                           
+                                           
+                    
+                                          <li class="active"><span class="product-image" data-url="http://dev.blingjewelry.com/media/catalog/product/cache/1/base_image/400x400/17f82f742ffe127f42dca9de82fb58b1/b/l/bling-eng-sample-front_1.jpg" data-id="186160" data-image-id="186160">Front</span></li><li><span class="product-image" data-url="http://dev.blingjewelry.com/media/catalog/product/cache/1/base_image/400x400/17f82f742ffe127f42dca9de82fb58b1/b/l/bling-eng-sample-back_1.jpg" data-id="186161" data-image-id="186161">Back</span></li>                    
+                    </ul>
+
+                    <script type="text/html" class="no-display" id="product-image-template">
+                        <li class="#{class}">
+                        <span class="product-image" data-id="#{image-id}" data-image-id="#{data-image-id}" data-url="#{data-url}">#{label}</span>
+                            <img width="60" height="60" class="product-image" src="#{ico}" data-id="#{image-id}" data-image-id="#{data-image-id}" data-url="#{data-url}">
+                        </li>
+                    </script>
+                    <script type="text/html" class="no-display" id="product-image-template-label">
+                        <li class="#{class}">
+                          <span class="product-image" data-id="#{image-id}" data-image-id="#{data-image-id}" data-url="#{data-url}">#{label}</span>
+                        </li>
+                    </script>
+                </div>
+
+
+                <div class="pd_panels_nav" id="pd_panels_nav">
+                    <button class="pd-btn " style="display:none" id="pd_add_design"><span><span>Add Cliparts</span></span></button>
+                    <button class="pd-btn active" style="" id="pd_add_text"><span><span>Add Text</span></span></button>
+                    <button class="pd-btn " style="display:none" id="pd_add_image"><span><span>Upload Images</span></span></button>
+                </div>
+
+                  <div id="pd_panels" class="pd_panels">
+                      <!-- Product Designer Tabs -->
+                      <div id="pd_tabs" class="pd_tabs">
+                                                                                  <div class="pd-tab-content" id="pd_add_text-content" style="display: block;">
+                                  <h4 class="pd-header pd-header-add-text">
+                                      Add Text                                      <button id="reset_text_settings" class="pd-btn-clear-text-styles">Reset text</button>
+                                  </h4>
+                                                                    <div class="pd-content">
+
+
+
+
+
+
+<!-- mmc 2ten monogram declare the monogram fonts -->
+<style type="text/css">
+
+    @font-face{font-family:Circle3;src:url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/monogram/Circle Monograms Three White Alt.ttf")}
+
+    @font-face{font-family:Circle2;src:url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/monogram/Circle Monograms Two White.ttf")}
+
+    @font-face{font-family:Monoscript;src:url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/monogram/monogram kk sc.ttf")}
+
+</style>
+
+<!-- mmc 2ten monogram these are the text/monogram tabs -->
+<div class="subtab-nav" id="subtab-nav">
+    <button class="subtab-nav__button active" id="subtab_text"><span><span>Text</span></span></button>
+    <button class="subtab-nav__button" id="subtab_monogram"><span><span>Monogram</span></span></button>
+</div>
+<div class="subtab-wrap">
+    <div class="subtab subtab-text" id="subtab_text-content">
+
+<!-- native text tab here -->
+
+
+<style type="text/css">
+    @font-face {
+        font-family: Tangerine;
+        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/t/a/tangerine-regular.ttf");
+    }
+    @font-face {
+        font-family: Playball;
+        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/p/l/playball-regular.ttf");
+    }
+    @font-face {
+        font-family: Sacramento;
+        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/s/a/sacramento-regular.ttf");
+    }
+    @font-face {
+        font-family: Cormorant SC SemiBold;
+        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/c/o/cormorantsc-semibold.ttf");
+    }
+    @font-face {
+        font-family: Nimbus Roman No9 L;
+        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/n/i/nimbusromno9l-reg.otf");
+    }
+    @font-face {
+        font-family: Liberation Sans;
+        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/l/i/liberationsans-regular.ttf");
+    }
+    @font-face {
+        font-family: Circle-Monograms-Three-White-Alt;
+        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/c/i/circle-monograms-three-white-alt.ttf");
+    }
+    @font-face {
+        font-family: Circle-Monograms-Two-White;
+        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/c/i/circle-monograms-two-white.ttf");
+    }
+    @font-face {
+        font-family: monogram-kk-sc;
+        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/m/o/monogram-kk-sc.ttf");
+    }
+</style>
+
+<div>
+    <div class="pd-element-wrapper">
+      <div class="pd-text-font-left">
+          <input type="hidden" name="design_type" id="design_type" value="text" />
+        <select class="font-picker pd-select" id="font-selector" >
+                                 
+                    <option value="Tangerine">Tangerine</option>
+        
+                         
+                    <option value="Playball">Playball</option>
+        
+                         
+                    <option value="Sacramento">Sacramento</option>
+        
+                         
+                    <option value="Cormorant SC SemiBold">Cormorant SC SemiBold</option>
+        
+                         
+                    <option value="Nimbus Roman No9 L">Nimbus Roman No9 L</option>
+        
+                         
+                    <option value="Liberation Sans">Liberation Sans</option>
+        
+                         
+                                <option value="Circle-Monograms-Three-White-Alt">Circle-Monograms-Three-White-Alt</option>
+                    
+                         
+                                <option value="Circle-Monograms-Two-White">Circle-Monograms-Two-White</option>
+                    
+                         
+                                <option value="monogram-kk-sc">monogram-kk-sc</option>
+                    
+                </select>
+      </div>
+      <div class="pd-text-font-right">
+        <select class="font-size-selector pd-select" id="font_size_selector" data-size="8">
+                            <option value="12" >12</option>
+                            <option value="14" >14</option>
+                            <option value="16" >16</option>
+                            <option value="18" >18</option>
+                            <option value="20" >20</option>
+                            <option value="22" >22</option>
+                            <option value="24" >24</option>
+                            <option value="28" >28</option>
+                            <option value="32" >32</option>
+                            <option value="36" >36</option>
+                            <option value="40" >40</option>
+                            <option value="44" >44</option>
+                            <option value="48" >48</option>
+                            <option value="52" >52</option>
+                            <option value="60" >60</option>
+                            <option value="72" >72</option>
+                    </select>
+      </div>
+        <a href="javascript:void(0);" id="deselect" style="display:none">Add New Text Layer</a>
+    </div>
+    <div class="pd-element-wrapper pd-mmc-text-styles">
+        <button class="panel-btn pd-btn-bold" id="add_text_btn_bold">B</button>
+        <button class="panel-btn pd-btn-italic" id="add_text_btn_italic">I</button>
+        <button class="panel-btn pd-btn-underline" id="add_text_btn_underline">U</button>
+        <button class="panel-btn pd-btn-stroke-through" id="add_text_btn_stroke_through">S</button>
+        <span class="panel-btn-sep"></span>
+
+                    <button id="outline-button" class="panel-btn2">Outline</button>
+            <button id="shadow-button" class="panel-btn2">Shadow</button>
+            <div class="pd-text-effect-popup">
+                <fieldset class="shadow-config text-effect">
+                    <legend>Shadow</legend>
+                    <div id="shadow-cancel" title="Cancel Shadow" data-effect="shadow" class="panel-cancel-btn">&times;</div>
+                    <div class="pd-element-wrapper">
+                        <label>Offset Y: </label>
+                        <input type="range" value="0" id="shadow_y_range" min="-25" max="25" step="1">
+                    </div>
+                    <div class="pd-element-wrapper">
+                        <label>Offset X: </label>
+                        <input type="range" value="0" id="shadow_x_range" min="-25" max="25" step="1">
+                    </div>
+                    <div class="pd-element-wrapper">
+                        <label>Blur: </label>
+                        <input type="range" value="0" id="shadow_blur" min="0" max="50" step="1">
+                    </div>
+                    <div class="pd-element-wrapper">
+                        <canvas height="40" width="288" id="textShadow" class="color-picker"></canvas>
+                    </div>
+                </fieldset>
+                <fieldset class="outline-config text-effect">
+                    <legend>Outline</legend>
+                    <div id="outline-cancel" title="Cancel Outline" data-effect="outline" class="panel-cancel-btn">&times;</div>
+                    <div class="pd-element-wrapper">
+                        <label>Size:</label>
+                        <input type="range" value="0" id="outline_range" min="0" max="3" step="0.05">
+                    </div>
+                    <div class="pd-element-wrapper">
+                        <canvas height="40" width="288" id="strokeStyle" class="color-picker"></canvas>
+                    </div>
+                </fieldset>
+            </div>
+            </div>
+    <div class="colors-panel" id="add_text_colors_panel">
+                    <span class="color-btn color-code-D6ACFD" style="background-color:#D6ACFD">&nbsp;</span>
+                    <span class="color-btn color-code-80FFFF" style="background-color:#80FFFF">&nbsp;</span>
+                    <span class="color-btn color-code-859585" style="background-color:#859585">&nbsp;</span>
+                    <span class="color-btn color-code-DFFF80" style="background-color:#DFFF80">&nbsp;</span>
+                    <span class="color-btn color-code-B09085" style="background-color:#B09085">&nbsp;</span>
+                    <span class="color-btn color-code-85B085" style="background-color:#85B085">&nbsp;</span>
+                    <span class="color-btn color-code-85B0AF" style="background-color:#85B0AF">&nbsp;</span>
+                    <span class="color-btn color-code-DA82C3" style="background-color:#DA82C3">&nbsp;</span>
+                    <span class="color-btn color-code-CFFBC0" style="background-color:#CFFBC0">&nbsp;</span>
+                    <span class="color-btn color-code-B08590" style="background-color:#B08590">&nbsp;</span>
+                    <span class="color-btn color-code-DEDEDE" style="background-color:#DEDEDE">&nbsp;</span>
+                    <span class="color-btn color-code-97E6FD" style="background-color:#97E6FD">&nbsp;</span>
+                    <span class="color-btn color-code-80FFA0" style="background-color:#80FFA0">&nbsp;</span>
+                    <span class="color-btn color-code-FFDF80" style="background-color:#FFDF80">&nbsp;</span>
+                <span class="color-picher"></span>
+    </div>
+    <div class="pd-element-wrapper color-picker-palitra" id="color-picker-palitra" style="display: none;">
+        <canvas height="69" width="290" id="color" class="color-picker"></canvas>
+    </div>
+    <div class="pd-element-wrapper pd-custom-text-wrapper">
+        
+                    <input type="text" id="add_text_textarea" class="pd-textarea" placeholder="Enter text here" />
+            </div>
+    <div class="pd-element-wrapper pd-add-text-actions">
+        <button id="add_text_button" class="pd-btn pd-btn-add-text">Add Text</button>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.observe("dom:loaded", function(e){
+        new GoMage.TextEditor('Arial', '14');
+    }.bind(this));
+    var fonts = 'Liberation Mono,Liberation Sans,Liberation Sans Narrow,Liberation Serif,Tangerine,Playball,Sacramento,Cormorant SC SemiBold,Nimbus Roman No9 L,Liberation Sans,Circle-Monograms-Three-White-Alt,Circle-Monograms-Two-White,monogram-kk-sc'.split(',');
+    if (fonts != '') {
+        WebFontConfig = {
+            custom: {
+                families: fonts
+            }
+        };
+
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                '://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    }
+</script>
+
+
+    </div>
+      <!-- mmc 2ten monogram subtab here -->
+      <div class="subtab subtab-monogram" id="subtab_monogram-content">
+          <!-- ************ Monogram tab ************** -->
+          <style>
+              .monogram-options{
+              }
+              .monogram-options ul{
+                  margin:0;
+                  padding:5px 0;
+              }
+              .monogram-options li{
+                  display:inline-block;
+                  margin-right:5px;
+              }
+              .monogram-options a{
+                  display:block;
+                  background:gray;
+                  color:white;
+                  padding:0 3px;
+              }
+              .monogram-options a.active{
+                  background:red;
+              }
+              .monogram-input{
+              }
+              .monogram-validation{
+                  display:inline;
+                  padding-left:7px;
+              }
+              .subtab{
+                  display:none;
+              }
+              .subtab:first-child{
+                  display:block;
+              }
+              .subtab-nav button.active{
+                  background: white;
+                  color:#636363;
+              }
+              .subtab-nav li{
+                  display:inline-block;
+                  padding:10px;
+              }
+              .subtab-nav{
+                padding: 5px 7px 0 7px;
+                margin-bottom: 10px;
+                margin: -7px -7px 10px -7px;
+                background: #ededed;           
+              }
+              .subtab-nav__button {
+                  border: solid 1px #ddd;
+                  border-radius: 0;
+                  padding: 6px 17px;
+                  margin-right: 0px;
+                  border-bottom: none;
+                  background: transparent;
+                  background: rgba(255,255,255,0);
+                  border-radius: 3px 3px 0 0;
+                  font-size: 13px;
+                  color:#888;
+              }
+
+          </style>
+
+
+          <!-- mmc 2ten monogram looks for clicks on circle3 circle2 buttons -->
+          <script>
+                      // sets font_code value based on user selection
+                      $j('document').ready(function() {
+
+                          $j('.js-monogram-font').on('click touchstart', function() {
+                              console.log('click');
+                              // clear canvas
+                              window.pd.canvas.clear();
+
+                              // clear form fields
+                              $j('#monogram_text').val('');
+                              $j('#add_text_textarea').val('');
+
+                              $j('.js-monogram-font').removeClass('active');
+                              $j(this).addClass('active');
+                              var font_code = $j(this).data('font-code');
+                              $j('#font_code').val(font_code);
+                          })
+
+
+                          // $j('.subtab-nav li').on('click',function(){
+                          //  var activeTab = $j(this).data('tab');
+                          //  $j('.subtab').hide();
+                          //  $j(activeTab).show();
+                          // })
+                      })
+
+          </script>
+
+          <!-- mmc 2ten monogram buttons to select type of monogram font -->
+          <!-- 
+
+          - buttons for user to select the mongram font
+
+          user can select
+          - circle monogram 2 characters or 3
+          - script monogram 1-3 characters
+
+          upon selection form field font_code must be changed
+
+          -->
+          <div class="monogram-options">
+              <ul>
+                  <li><a href="#" data-font-code="30A" class="js-monogram-font">Circle3</a></li>
+                  <li><a href="#" data-font-code="32A" class="js-monogram-font">Circle2</a></li>
+                  <li><a href="#" data-font-code="1" class="js-monogram-font">Monoscript</a></li>
+              </ul>
+          </div>
+          <div class="monogram-input">
+              <!-- this is the monogram text input 
+
+              removed this class class="pd-textarea" 
+              -->
+              <input type="text" id="monogram_text"
+                     placeholder="Enter text here" 
+                     maxlength="3" style="width:80px!important;"/>
+              <p class="monogram-validation">1-3 Chars</p>
+          </div>
+
+
+          <!-- ************ Monogram tab end ************** -->
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+                                      
+                                  </div>
+                              </div>
+                                                                          </div>
+                      <!-- End Of Product Designer Tabs -->
+                  </div>
+            </div>
+
+            <div id="pd_container" data-has-controls="false" data-lock-scaling="false"></div>
+          </div>
+        </div>
+
+        <div id="pd_bottom_panel" class="pd_bottom_panel" style="width: 400px; display: none;">
+            <button class="pd-btn-ico pd-btn-ico-undo" id="pd_undo"><span><span>Undo</span></span></button>
+            <button class="pd-btn-ico pd-btn-ico-redo" id="pd_redo"><span><span>Redo</span></span></button>        
+            <button class="pd-btn-ico pd-btn-ico-remove" id="pd_delete"><span><span>Remove</span></span></button>
+            <button class="pd-btn-ico pd-btn-ico-center" id="pd_allign_by_center"><span><span>Align by center</span></span></button>         
+            <button class="pd-btn-ico pd-btn-ico-hor disabled" id="pd_flip_horizontal"><span><span>Horizontal Flip</span></span></button>
+            <button class="pd-btn-ico pd-btn-ico-ver disabled" id="pd_flip_vertical"><span><span>Vertical Flip</span></span></button>
+            <button class="pd-btn-ico pd-btn-ico-front" id="pd_front"><span><span>Bring to front</span></span></button>
+            <button class="pd-btn-ico pd-btn-ico-back" id="pd_back"><span><span>Send to back</span></span></button>
+        </div>        
+        
+      </div>
+      
+      <div class="product-designer-sidebar">
+
+        <h1>GoMage Test</h1>
+
+
+          <div id="additional_panels" style="display: block">
+                                          <div id="product-colors" class="product-colors pd-box product-options" style="display: none">
+                                </div>
+              <div id="product_options" class="pd_product_options pd-box">
+                  
+<form action="https://dev.blingjewelry.com/checkout/cart/add/uenc/aHR0cDovL2Rldi5ibGluZ2pld2VscnkuY29tL2Rlc2lnbmVyLz9pZD0yMzQ5Ng,,/product/23496/form_key/0SN4bUZ539cWhwCQ/" method="post"
+      id="product_addtocart_form">
+    <input name="form_key" type="hidden" value="0SN4bUZ539cWhwCQ" />
+    <div class="no-display">
+        <input type="hidden" name="product" value="23496"/>
+        <input type="hidden" id="design_option"
+               name="options[0][]" value="">
+
+
+        <!-- ************ Monogram hidden fields ************** -->
+        <!--  these fields are for saving more data in the system  -->
+
+        <input type="hidden" name="design_type" id="design_type" value="monogram"><!-- may not be needed-->
+        <input type="hidden" name="font_code" id="font_code" value=""><!-- may not be needed-->
+        <input type="hidden" name="design_text" id="design_text" value="">
+        
+        <!-- ************ End Monogram hidden fields ************** -->
+
+
+
+    </div>
+    </form>
+<script type="text/javascript">
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form', true);
+    //]]>
+</script>
+
+              </div>
+                        </div>
+
+          <div id="design_price_container" class="product-designer-price" style="">
+                  
+
+                        
+    <div class="price-box">
+                                                                <span class="regular-price" id="product-price-23496">
+                                            <span class="price">$5.00</span>                                    </span>
+                        
+        </div>
+
+    <a href="javascript:;" id="price-more-info-switcher">
+        Details    </a>
+    <ul id="price-more-info" style="display: none">
+        <li id="product_price">
+            <span>Base Price: </span>
+                        <div class="price-box"><span class="price">$5.00</span></div>
+        </li>
+        <li style="display: none" id="fixed_price">
+            <span>Engraving: </span><span class="price"></span></li>
+        <li style="display: none" id="design_areas_price">
+            <span>Additional Surface: </span><span class="price"></span></li>
+        <li style="display: none" id="images_price">
+            <span>Additional Images: </span><span class="price"></span></li>
+        <li style="display: none" id="texts_price">
+            <span>Additional Text: </span><span class="price"></span></li>
+    </ul>
+          </div>
+
+
+          <div id="pd_save_container" class="pd_save_container" style="display: block">
+              <div class="pd-add-btn-wrap">
+                <button class="pd-btn pd-btn-cart" id="pd_gt_product">
+                  <span><span>Add to Bag</span></span>
+                </button>
+              </div>
+              <div class="pd-secondary-btn-wrap">
+                <div class="pd-back-to-product"><a href="http://dev.blingjewelry.com/catalog/product/view/id/23496/s/gomage-test/">Back to Product</a></div>
+                <button class="pd-btn" id="pd_share"><span><span>Save & Share</span></span></button>
+                <button class="pd-btn" id="pd_zoom"><span><span>Preview</span></span></button>
+                <button class="pd-btn" id="pd_save_design"><span><span>Save  Design</span></span></button>
+              </div>
+          </div>
+
+      </div>      
+      
+    </div>
+
+</div>
+<div id="product-zoom-container" style="width: 685px; height: 805px;">
+    <canvas id="product-zoom-canvas"></canvas>
+</div>
+<div id="share-container" style="display: none"></div>
+
+
+
+<div class="modal fade" id="modal-sizing">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="modal-body">
+                <div class="product-sizing toggle-content tabs">
+                    <dl id="sizing-tabs" class="sizing-tabs">
+
+                        <dt class="tab ring"><span>Ring</span></dt>
+                        <dd class="tab-container">
+                            <h1>PRINTABLE RING SIZER</h1>
+We recommend using our <a href="http://www.blingjewelry.com/doc/blingjewelry-ring-sizing.pdf" target="_blank">Printable Ring Sizer</a> to determine your ring size.<br /> 
+With two convenient methods for sizing your rings you can't miss!</p>
+<h2>Quick Ring Sizing Tips:</h2>
+<h4 class="hilight">For You</h4>
+Make sure your finger is at a nice and normal body temperature. See if your knuckle is much larger than your finger’s base, if so, take two separate measurements and choose a size in between. You want a ring to fit over your knuckle, but not be too loose!
+</p>
+<h4 class="hilight">For Someone Else</h4>Measuring rings for another person takes stealth. The easiest, most accurate way is to quietly take a ring he or she wears often and compare it to our <a href="http://www.blingjewelry.com/doc/blingjewelry-ring-sizing.pdf" target="_blank">Printable Ring Sizer</a>.</p>
+<p><br><a href="http://www.blingjewelry.com/doc/blingjewelry-ring-sizing.pdf" target="_blank" class="button">Printable Ring Sizer</a></p>
+                        </dd>
+                        <dt class="tab cz"><span>CZ</span></dt>
+                        <dd class="tab-container">
+                            <div class="std">
+<h1>CZ Size Chart</h1>
+<div>
+<ol>
+<li>Before printing make sure that the printer is set to 100%.</li>
+<li>You can check that the CZ Sizing Chart printed correctly by measuring it with a ruler. Each shape should measure accurately.</li>
+<li>Click below to download and print the chart. Prior to printing, ensure that page scaling is set to "none" on your print dialog box.</li>
+</ol>
+<a href="http://dev.blingjewelry.com/doc/blingjewelry-cz-sizing.pdf" target="_blank" class="button">Printable Size Chart</a>
+</div>
+<div class="hover-wrap">
+<div class="cz-chart img">&nbsp;</div>
+<div class="hover-show-wrap">
+<div class="hover-show">
+<a href="http://dev.blingjewelry.com/doc/blingjewelry-cz-sizing.pdf" target="_blank" class="button">Printable Size Chart</a>
+</div>
+</div>
+</div>
+</div>                        </dd>
+                        <dt class="tab necklace"><span>Necklace</span></dt>
+                        <dd class="tab-container">
+                            <h1>Necklace Size Chart</h1>
+<div class="necklace-image-wrap">
+<img src="http://dev.blingjewelry.com/media/wysiwyg/sizing/necklace-woman.jpg" alt="woman necklace lengths"  />
+<img src="http://dev.blingjewelry.com/media/wysiwyg/sizing/necklace-man.jpg" alt="mens necklace lengths"/>
+</div>
+<div class="necklace-image-wrap">
+<img src="http://dev.blingjewelry.com/media/wysiwyg/sizing/chains1.jpg" alt="chain types" />
+<img src="http://dev.blingjewelry.com/media/wysiwyg/sizing/chains2.jpg" alt="necklace chain types" />
+</div>
+<p class="chain-note">*Chain gauge and color is chosen according to pendant</p>
+                        </dd>
+                        <dt class="tab bracelet"><span>Bracelet</span></dt>
+                        <dd class="tab-container">
+<div class="guide">
+<h1>Bracelet Sizing</h1>
+<div class="section">
+<h2>Finding Your Bracelet Size</h2>
+<p>You may refer to the chart below for a basic guideline to bracelet sizes. Please note that this is an approximate measurement. Follow the steps below for a more accurate measurement. 
+</p>
+<div class="row cols3">
+<div class="col">
+<table class="data-table zebra-table">
+<tr>
+<th>Children's</th>
+<th>Length</th>
+</tr>
+<tr>
+<td>Newborn - 6 mos.</td>
+<td>4"</td>
+</tr>
+<tr>
+<td>6 - 12 months</td>
+<td>4 1/2"</td>
+</tr>
+<tr>
+<td>12 - 24 Months</td>
+<td>5"</td>
+</tr>
+<tr>
+<td>2 - 5 Years</td>
+<td>5 1/2"</td>
+</tr>
+<tr>
+<td>6 - 8 Years</td>
+<td>6"</td>
+</tr>
+<tr>
+<td>9 - 13 Years</td>
+<td>6 1/2"</td>
+</tr>
+</table>
+</div>
+<div class="col">
+<table class="data-table zebra-table">
+<tr>
+<th>Women's</th>
+<th>Length</th>
+</tr>
+<tr>
+<td>Petite</td>
+<td>7"</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>7 1/2" - 8"</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>8 1/2"</td>
+</tr>
+<tr>
+<td>Plus Size</td>
+<td>9"</td>
+</tr>
+<tr>
+<td>Anklet</td>
+<td>9.5" - 10"</td>
+</tr>
+<tr>
+<td colspan="2"><span style="font-size:11px;font-style:italic">*Anklets usually come with extension chain</div></td>
+</tr>
+</table>
+
+</div>
+<div class="col">
+<table class="data-table zebra-table">
+<tr>
+<th>Men's</th>
+<th>Length</th>
+</tr>
+<tr>
+<td>Small</td>
+<td>8"</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>8 1/2"</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>9"</td>
+</tr>
+<tr>
+<td>Plus Size</td>
+<td>9 1/2"</td>
+</tr>
+</table>
+</div>
+</div>
+<h4>Measuring Your Wrist for an Accurate Bracelet Size</h4>
+<p>To find your perfect bracelet size, follow these steps:</p>
+
+<p><span class="hilight">STEP 1:</span> Measure your wrist with a flexible tape measurements or a strip of paper just below the wrist bone, where you would normally wear the bracelet.</p>
+<p><span class="hilight">STEP 2:</span> If you are using a plain strip of paper, mark your size with a pen or pencil then use a ruler to measure the lenght. That would be your wrist size.</p>
+<p><span class="hilight">STEP 3:</span> To find your bracelet size, just add your wrist size with the appropriate measurements below.</p>
+
+<table class="data-table zebra-table">
+<tr>
+<th>Fitting Style</th>
+<th>Add inch(es) to wrist size</th>
+</tr>
+<tr>
+<td>Snug Fit</td>
+<td>Add 1/4" to 1/2"</td>
+</tr>
+<tr>
+<td>Comfort Fit</td>
+<td>Add 3/4" to 1"</td>
+</tr>
+<tr>
+<td>Loose Fit</td>
+<td>Add 1 1/4"</td>
+</tr>
+</table>
+
+<p>Do you want a snug or loose fit? Well, that really will vary between each individual. If you are buying a delicate bracelet with a thin chain, we suggest doing a snug fit. Most other bracelets should have a comfort fit except when buying large or thick cuffs or bangles. It's best to buy large bracelets with a loose fit so you don’t feel like you are suffocating your wrist.</p>
+</div>
+<div class="section">
+<h2>How Can I Find My Bangle Size?</h2>
+<p>To determine your bangle size, follow these steps:</p>
+<img src="http://dev.blingjewelry.com/media/wysiwyg/bling/page-bangle-illustration.jpg" alt="bangle sizing" style="float:right;border:solid 1px #e3e3e3;margin:0 0 15px 15px" />
+<p><span class="hilight">STEP 1:</span> Close your fingers together and bring your thumb to your little finger (as pictured). Pretend that you were putting on a bangle</p>
+<p><span class="hilight">STEP 2:</span> Using a strip of paper or tape measurements, wrap it around your hand at the widest point.. If you are using a plain strip of paper, mark your size with a pen on that paper. Then measure that paper strip with a ruler. That would be the circumference of your hand.</p>
+<p><span class="hilight">STEP 3:</span> Compare your hand circumference to the chart below. Purchase a bangle with diameter that is the next size up from your actual hand measurement.</p>
+
+<table class="data-table zebra-table">
+<tr>
+<th>Diameter</th>
+<th>Circumference</th>
+<th>Size</th>
+</tr>
+<tr>
+<td>2 3/8"</td>
+<td>7 1/2"</td>
+<td>Small</td>
+</tr>
+<tr>
+<td>2 5/8"</td>
+<td>8 1/4"</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>2 3/4"</td>
+<td>8 3/5"</td>
+<td>Large</td>
+</tr>
+</table>
+</div>
+</div>                        </dd>
+
+
+                    </dl>
+                </div>
+            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal-shipping">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="modal-body">
+<p>SHIPPING INFO USA</p>
+<ul>
+<li>FREE STD (over $25)</li>
+<li>USPS STD $2.99 <em>3-12 Biz days</em>&nbsp;</li>
+<li>Priority $5.95 flat rate <em>1-3 Biz days</em>&nbsp;</li>
+<li>Express $19.95 flat rate <em>1-2 Biz days</em>&nbsp;</li>
+<li>APO/FPO Priority $6.95 flat rate <em>1-3 Biz days</em>&nbsp;</li>
+<li>UPS rates calculated at checkout&nbsp;</li>
+<li>STD Canada $2.99 <em>4-14 Biz days</em></li>
+<li>STD Int’l $3.99 <em>6-20 Biz days</em></li>
+</ul>
+<!-- <p>More info on Int&rsquo;l rates see <a href="http://dev.blingjewelry.com/shipping-policy-i-57.html#international" target="_blank">shipping policy</a>.</p><br> -->
+<p style="font-size:9px"><em>except remote areas</em></p>            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal-returns">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="modal-body">
+<p>FREE RETURNS</p>
+<ul>
+<!-- <li>30 day Money Back Guarantee</li>
+<li>30 days hassle-free returns</li> -->
+<li>Hassle Free Return</li>
+<!-- <li>Extended returns & refunds to Jan 16</li> -->
+<li>USA prepaid return label with order</li>
+<li>Sorry engraved items not returnable</li>
+<!-- <li>45 days holiday season returns extended&nbsp;</li> -->
+</ul>
+<!-- <p>More info on<a href="http://www.blingjewelry.com/return-policy-i-2.html" target="_blank"> exchanges and refunds policy</a>.</p>  -->            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal-gift">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="modal-body">
+<p><img alt="gift box" src="http://dev.blingjewelry.com/media/wysiwyg/BlingJewelry-new-gift-box-3.jpg" /></p>            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+<script type="text/javascript">
+    $j(document).ready(function () {
+        $j('.js-sizing a').on('click', function () {
+            $j('#modal-sizing').modal('show');
+        });
+        $j('.shipping a').on('click', function () {
+            $j('#modal-shipping').modal('show');
+        });
+        $j('.returns a').on('click', function () {
+            $j('#modal-returns').modal('show');
+        });
+        $j('.gift-box a').on('click', function () {
+            $j('#modal-gift').modal('show');
+        });
+        $j('.js-reviews').on('click', function () {
+            $j('#modal-reviews').modal('show');
+        });
+
+    });
+</script>
+                </div>
+            </div>
+        </div>
+                <div class="footer-container">
+    <div class="container">
+        <div class="footer">
+        	<div class="footer-wrap">
+    			<div class="block block-subscribe">
+    <div class="block-subscribe-wrap">
+        <div class="block-title">
+            <style><!--
+.subscribe-button{
+    width: 100%;
+    padding: 10px 15px!important;
+    font-size: 16px!important;
+    margin-bottom:8px;
+}
+--></style>
+<a class="button subscribe-button" href="#" data-toggle="modal" data-target="#modal-subscribe">Join our list and save!</a>        </div>
+        <form>
+            <div class="block-content">
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry validate-email bronto-email js-bronto__email" size="35" name="100573" value="" placeholder="Your email..."  />
+                </div>
+                <div class="actions">
+                    <input type="hidden" name="100575[1005666]" value="true" />
+                      <a class="button bronto-submit js-bronto__submit" 
+                        data-bronto-id="bdesvvzobdptplqinvhpmmfrkogqbkp" 
+                        data-bronto-list="4eea2eeb-7702-4ec6-8b09-40c0fad1d06d">
+                        <span class="js-bronto__submit-label">Join</span>
+                        <span class="js-bronto__success-label">Thank you!</span>
+                      </a>
+                </div>
+                <div class="form-subscribe-footer"><p>by subscribing you agree to our<a href="http://dev.blingjewelry.com/privacy-policy-i-3.html"> privacy policy</a></p>
+</div>
+            </div>
+        </form>
+
+
+
+    </div>
+    </div>
+    <script type="text/javascript">
+        //<![CDATA[
+       
+
+             //]]>
+    </script>
+        		<div class="footer-links">
+        			<div class="links-wrapper accordion toggle-content">
+<dl>
+<dt>Customer Service</dt>
+<dd>
+<h4>Customer Service</h4>
+<ul class="links">
+		<li><a href="http://dev.blingjewelry.com/help-desk-i-54.html">Customer Service</a></li>
+		<li><a href="http://dev.blingjewelry.com/shipping-policy-i-57.html"">Shipping Info</a></li>
+		<li><a href="http://dev.blingjewelry.com/return-policy-i-2.html">Returns & Exchanges</a></li>
+		<li><a href="http://dev.blingjewelry.com/payment-options-i-56.html">Payment Options</a></li>
+		<li><a href="http://dev.blingjewelry.com/international-customer-i-53.html">International Orders</a></li>
+		<li><a href="http://dev.blingjewelry.com/contacts/">Contact Us</a></li>
+</ul>
+</dd>
+<dt>Information</dt>
+<dd>
+<h4>Information</h4>
+<ul class="links">
+<li><a href="http://dev.blingjewelry.com/ring-size-charts-i-5.html">Ring Size Chart</a></li>
+<li><a href="http://dev.blingjewelry.com/necklace-sizing-i-60.html">Necklace Size Chart</a></li>
+<li><a href="http://dev.blingjewelry.com/bracelet-sizing-i-63.html">Bracelet Size Chart</a></li>
+<li><a href="http://dev.blingjewelry.com/cz-size-chart.html">CZ Size Chart</a></li>
+<li><a href="http://dev.blingjewelry.com/jewelry-glossary-i-21.html">Jewelry Glossary</a></li>
+<li><a href="http://dev.blingjewelry.com/jewelry-care-i-16.html">Jewelry Care</a></li>
+<li><a href="http://dev.blingjewelry.com/buyers-guide-i-12.html">Shopper's Material Guide</a></li>
+</ul>
+</dd>
+<dt>Company</dt>
+<dd>
+<h4>Company</h4>
+<ul class="links">
+		<li><a href="http://dev.blingjewelry.com/about-us-i-22.html">Our Story</a></li>
+		<li><a href="http://dev.blingjewelry.com/faqs-i-20.html">FAQ</a></li>
+		<li><a href="http://dev.blingjewelry.com/contacts/">Contact Us</a></li>
+		<li><a href="http://dev.blingjewelry.com/rewardpoints-welcome ">Bling Rewards</a></li>
+		<li><a href="http://dev.blingjewelry.com/affiliate-program-i-8.html ">Affiliate Program</a></li>
+<li><a href="http://dev.blingjewelry.com/military-discount-id-me/">ID.me</a></li>
+		<li><a href="http://dev.blingjewelry.com/blog/">Blog</a></li>
+</ul>
+</dd>
+</dl>
+</div>        		</div>
+    		</div>
+    		<div class="footer-copyright">
+
+                                <div class="footer-phone">
+                    800-434-9905&nbsp;&nbsp;INT'L 212-683-1746                </div>
+                
+            	<div class="links">
+	<ul>
+		<li><a href="http://dev.blingjewelry.com/help-desk-i-54.html">Help</a></li>
+		<li><a href="http://dev.blingjewelry.com/sitemap-i-61.html">Sitemap</a></li>
+		<li><a href="http://dev.blingjewelry.com/disclaimer.html">Disclaimer</a></li>
+		<li><a href="http://dev.blingjewelry.com/privacy-policy-i-3.html">Privacy Policy</a></li>
+	</ul>
+</div>                <address class="copyright">BLINGJEWELRY&reg;2008 TRADEMARK.</address>
+        	</div>
+        </div>
+    </div>
+</div>
+<a href="#" id="back-top"><i class="icon-angle-up"></i><span>top</span></a>                
+
+
+
+<script bronto-popup-id="41b43d17-8e08-4553-bce4-ac2cb797bc1f" src="https://cdn.bronto.com/popup/delivery.js"></script>
+<script type="text/javascript">
+if (document.addEventListener) {
+  document.addEventListener('bronto:popup-submitted', function(e) {
+    new Ajax.Request('http://dev.blingjewelry.com/btnewsletter/index/submit/', {
+      method: 'post',
+      parameters: { emailAddress: e.detail.email }
+    });
+  }, false);
+}
+</script>
+
+
+<div class="modal fade" id="modal-login">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="loader">
+				<div class="spinner">
+					<i class="icon-spinner icon-large icon-spin"></i>
+					<div class="spinner-text"><em>loading...</em></div>
+				</div>
+			</div>
+
+			<div id="login-block">
+				<div class="success">
+					<div class="load-on-success">You're all set.</div>
+				</div>
+				<div>
+				<form method="post" id="lb-login" action="https://dev.blingjewelry.com/customer/account/loginPost/referer/aHR0cDovL2Rldi5ibGluZ2pld2VscnkuY29tL2Rlc2lnbmVyLz9pZD0yMzQ5Ng,," accept-charset="UTF-8">
+				    <input name="form_key" type="hidden" value="0SN4bUZ539cWhwCQ" />
+
+					<input type="hidden" value="hello" class="productalert_product" name="productalert_product">
+
+
+			  		<div class="modal-header">
+			  			<h3>Login</h3>
+			    		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			  		</div>
+			  		<div class="modal-body">
+						
+						<div class="social-login">
+							<h4>Login with</h4>
+
+							<div class="socialconnect-login">
+    <div class="account-login">
+                    <div class="facebookconnect-button">
+                <a href="javascript:void(0);" class="fb-login">Login</a>
+            </div>
+                            <div class="twitterconnect-button">
+                <a href="javascript:void(0);" class="tw-login">Login</a>
+            </div>
+                            <div class="googleconnect-button">
+                <a href="javascript:void(0);" class="g-login">Login</a>
+            </div>
+            </div>
+</div>
+						</div>
+
+						<div class="or"><span>or</span></div>
+
+						<div class="error"></div>
+						<!--<label for="login[username]">EMAIL</label>-->
+						<div class="input-box">
+							<input type="text" id="lb-userid" autocomplete="off" value="" name="login[username]" class="input-text required-entry validate-email" placeholder="Email Address">
+						</div>
+						<!--<label for="login[password]">PASSWORD</label>-->
+						<div class="input-box">
+							<input type="password" id="lb-password" name="login[password]" class="input-text required-entry validate-password" placeholder="Password">
+						</div>
+						<div class="login-submit-wrap">
+						<div class="input-box login-submit">
+							<input type="hidden" value="login" name="user[form_type]">
+							<input type="submit" value="Login" class="button" id="lb-req-submit">
+						</div>
+						<!-- <a href="javascript:void(0)" id="lb-forgot-pass">Forgot your password?</a> -->
+						<a href="https://dev.blingjewelry.com/customer/account/forgotpassword/" style="float: right;padding: 10px 15px;line-height: 1.5em;">Forgot your password?</a>
+						
+						</div>
+					</div>
+					<div class="modal-footer">
+						<!-- Not a member yet? <a href="javascript:void(0);" id="lb-register">Sign Up</a> -->
+						Not a member yet? <a href="https://dev.blingjewelry.com/customer/account/create/">Sign Up</a>
+					</div>
+				</form>
+				<script type="text/javascript">
+				//< ![CDATA[
+				  var myForm= new VarienForm('lb-login', true);
+				//]]>
+				</script>
+				</div>
+			</div>
+
+			<div id="reset-block" style="display: none;">
+				<div class="success">
+					<div class="load-on-success">Please check your email to reset your password</div>
+				</div>
+				<div>
+				<form id="lb-resetpw" action="https://dev.blingjewelry.com/customer/account/forgotpasswordpost/" accept-charset="UTF-8" method="post">
+			  		<div class="modal-header">
+			  		    <h3>Forgot Password</h3>
+			    		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			  		</div>
+			  		<div class="modal-body">
+						<p>Please enter your email address below. We will send you an email to confirm your password.</p>
+						<div class="error"></div>
+						<input type="text" id="lb-reset-pw-email" autocomplete="off" value="" name="email" class="input-text required-entry validate-email" placeholder="Email address">
+						<input type="hidden" value="" name="last_location">
+                        <input type="hidden" name="form_key" value="0SN4bUZ539cWhwCQ" />
+						<input type="submit" value="Submit" class="button">
+					</div>
+					<div class="modal-footer">
+						<a href="javascript:void(0);" class="re-login">Cancel</a>
+					</div>
+				</form>
+				<script type="text/javascript">
+				//< ![CDATA[
+			  	var myForm= new VarienForm('lb-resetpw', true);
+				//]]>
+				</script>
+				</div>
+			</div>
+
+			<div id="signup-block" style="display: none;">
+				<div class="success">
+					<div class="load-on-success">Please check your email to reset your password</div>
+				</div>
+				<div>
+			    <form action="https://dev.blingjewelry.com/customer/account/createpost/" method="post" id="signup-form" enctype="multipart/form-data">
+
+
+					<input type="hidden" value="hello" class="productalert_product" name="productalert_product">
+
+
+			  		<div class="modal-header">
+				    	<h3>Sign Up</h3>
+			    		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			  		</div>
+			  		<div class="modal-body">
+
+						
+						<div class="error"></div>
+						<div class="success">
+							<div class="load-on-success">Thanks for registering</div>
+						</div>
+						
+			            <input type="hidden" name="success_url" value="http://dev.blingjewelry.com/designer/?id=23496" />
+			            <input type="hidden" name="error_url" value="https://dev.blingjewelry.com/customer/account/create/" />
+                        <input type="hidden" name="form_key" value="0SN4bUZ539cWhwCQ" />
+						<div class="reg1">
+							<div class="social-login">
+								<h4>Sign Up with</h4>
+								<div class="socialconnect-register"> 
+            <div class="facebookconnect-button">
+            <a href="javascript:void(0);" class="fb-login">Login</a>
+        </div>
+                <div class="twitterconnect-button">
+            <a href="javascript:void(0);" class="tw-login">Login</a>
+        </div>
+                <div class="googleconnect-button">
+            <a href="javascript:void(0);" class="g-login">Login</a>
+        </div>
+    </div>
+							</div>
+							<div class="or"><span>or</span></div>
+				        	<!--<label for="lb_email_address" class="required">Email Address</label>-->
+				            <input type="text" name="email" id="lb_email_address" value="" title="Email Address" class="input-text validate-email required-entry" placeholder="Enter your email address" />
+							<a class="button reg-next">Next</a>
+						</div>
+						<div class="reg2" style="display:none">
+							<input type="hidden" name="is_subscribed" value="1" id="is_subscribed" />
+				        	<!--<label for="firstname" class="required">First name</label>-->
+				            <input type="text" id="firstname" name="firstname" value="" title="First Name" maxlength="255" class="input-text required-entry" autocomplete="off" placeholder="First name">
+				        	<!--<label for="lastname" class="required">Last name</label>-->
+							<input type="text" id="lastname" name="lastname" value="" title="Last Name" maxlength="255" class="input-text required-entry" autocomplete="off" placeholder="Last name">
+				        	<div class="line"></div>
+				        	<!--<label for="password" class="required">Password</label>-->
+							<input type="password" name="password" id="password" title="Password" class="input-text required-entry validate-password" placeholder="Password" />
+							<!--<label for="confirmation" class="required">Confirm Password</label>-->
+							<input type="password" name="confirmation" title="Confirm Password" id="confirmation" class="input-text required-entry validate-cpassword" placeholder="Password again" />
+							<button type="submit" class="button" title="Register">Register</button>
+						</div>
+					</div>
+					<div class="modal-footer">
+						Already a member? <a href="javascript:void(0);" class="re-login">Login</a>
+					</div>
+				</form>
+							    <script type="text/javascript">
+			    //<![CDATA[
+			       var dataForm = new VarienForm('signup-form', true);
+			        Form.getElements('signup-form').each(function(element) {
+			            element.setAttribute('autocomplete', 'off');
+			        });
+			    //]]>
+			    </script>
+				</div>
+			</div>
+
+    	</div><!-- /.modal-content -->
+  	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+var erroractive ='';
+
+$j("document").ready(function() {
+
+	
+	// todo - consider moving this code to app.js
+
+
+	$j('.register-link').click(function(){
+		$j('#modal-login').modal();
+		$j('#login-block,#reset-block,#login-spinner,.success,.error,.reg2').hide();
+		$j('#signup-block,.reg1,.fb-wrap').show();
+	});
+	$j('.login-link').click(function(){
+		$j('#modal-login').modal();
+		$j('#signup-block,#reset-block,#login-spinner,.success,.error').hide();
+		$j('#login-block').show();
+	});
+
+	$j('.reg-next').click(function(){
+		var valid = Validation.validate(document.getElementById('lb_email_address'));
+		if(valid){
+			$j('.reg1,.fb-wrap').hide();
+			$j('.reg2').show();
+		}
+	});
+
+	$j("#lb-password").val("");
+
+	$j("#lb-register").click(function(e) {
+		e.preventDefault();
+		clearErrorMsgLB();
+	    if(!erroractive){
+	      $j("#lightbox-wrapper .error-bar").hide();
+	      erroractive = false;
+	    }
+	    $j("#login-block, #reset-block").hide();
+	    $j("#signup-block").show();
+	    //$j("#lb-userid").val("Email address");
+	    $j("#lb-password").val("");
+	    //$j("#lb-user-email").val("Email address");
+		$j('.reg2').hide();
+		$j('.reg1,.fb-wrap').show();
+	});
+
+	$j("#lb-forgot-pass").click(function(e) {
+		e.preventDefault();
+		clearErrorMsgLB();
+	    $j("#login-block, #signup-block").hide();
+		$j("#reset-block").show();
+		//$j("#lb-reset-pw-email").val("Email address");
+	    if(!erroractive){
+	      $j("#lightbox-wrapper .error-bar").hide();
+	      erroractive = false;
+	    }
+	});
+
+	$j(".re-login").click(function(e) {
+		e.preventDefault();
+		clearErrorMsgLB();
+	    $j("#reset-block, #signup-block").hide();
+		$j("#login-block").show();
+	    if(!erroractive){
+	      $j("#lightbox-wrapper .error-bar").hide();
+	      erroractive = false;
+	    }
+	});
+
+	$j("#lb-signup").submit(function() {
+		var useremail = $j.trim($j("#lb-user-email").val());
+		if (useremail == "" || useremail == "Email address") {
+		showErrorMsgLB("Please enter an email address.");
+		return false;
+		} else {
+		return true
+		}
+	});
+
+	$j("#lb-login").submit(function() {
+		//$j(".loader").show();
+	});
+
+	$j("#lb-resetpw").submit(function() {
+		var email_val = $j("#lb-reset-pw-email").val();
+		if (email_val == "" || email_val == "Email address") {
+		showErrorMsgLB("Please enter an email address.");
+		return false
+		} else {
+		return true
+		}
+	});
+
+
+}); // end doc ready
+
+function showErrorMsgLB(errMsg){
+	if (errMsg != "") {
+	$j("#lightbox-wrapper .error-bar").show();
+	$j("#lightbox-wrapper .error-message").html(errMsg).show();
+	return false
+	} else {
+	return true
+	}
+}
+
+function clearErrorMsgLB(){
+    $j("#lightbox-wrapper .error-bar").hide();
+    $j("#lightbox-wrapper .error-message").html();
+}
+</script>
+
+    
+<script type="text/javascript">
+$j(document).ready(function() {
+	$j(".fb-login").click(function () {
+	    window.open("https://graph.facebook.com/oauth/authorize?client_id=1118401708239025&redirect_uri=http%3A%2F%2Fdev.blingjewelry.com%2Fsocialconnect%2Ffacebook%2Fconnect%2F&state=2093075558ca93a92a0c8f81de796f17&scope=email%2Cuser_birthday&display=popup", "fblogin", "height=320,width=640");
+	});
+});
+</script>    <script type="text/javascript">
+$j(document).ready(function() {
+	$j(".tw-login").click(function () {
+	    window.open("http://dev.blingjewelry.com/socialconnect/twitter/request/", "twlogin", "height=320,width=640");
+	});
+});
+</script>    <script type="text/javascript">
+$j(document).ready(function() {
+	$j(".g-login").click(function () {
+	    window.open("https://accounts.google.com/o/oauth2/auth?response_type=code&redirect_uri=http%3A%2F%2Fdev.blingjewelry.com%2Fsocialconnect%2Fgoogle%2Fconnect%2F&client_id=187243415834-fuur2fmao4sdjohv3gslncb1pk7j88nd.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&state=9264d803c98e21b17f77c0a05ec2202f&access_type=offline&approval_prompt=auto", "glogin", "height=600,width=600");
+	});
+});
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+
+
+//mmc added this to turn off on that page
+var url = location.pathname;
+if (url.indexOf('checkout/cart/configure') == -1) {
+//mmc end
+
+iCart.init({
+    title: 'Add to',
+    cart: 'Bag',
+    cartEdit: 'Edit',
+    wishlist: 'Wishlist',
+    compare: 'Compare',
+    width: 500, 
+    confirmDeleteCart: 'Are you sure you would like to remove this item from your shopping bag?',
+    confirmDeleteWishlist: 'Are you sure you would like to remove this item from your favorites?',
+    confirmDeleteCompare: 'Are you sure you would like to remove this item from the compare products?',
+    confirmClearCompare: 'Are you sure you would like to remove all products from your comparison?'
+});
+document.observe('dom:loaded', function(){iCart.updateLinks()});
+try {
+    if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //ie8 fix
+        var ieVersion = new Number(RegExp.$1)
+        if (ieVersion >= 8) {
+            iCart.updateLinks()
+        }
+    }
+} catch (err) {}
+
+} // mmc end
+//]]>
+</script>
+<script>var FEED_BASE_URL="http://dev.blingjewelry.com/";</script><script src="http://dev.blingjewelry.com/js/mirasvit/code/feedexport/performance.js" type="text/javascript"></script><div class="modal fade js-bronto__modal" id="modal-subscribe">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+            <div class="block-title">
+                <h1 style="font-size:20px">GET YOUR BLING ON!</h1>
+<div style="font-size:20px;font-weight:300"><span>Sign Up and Get</span> <span class="pink">10% Off</span></div>            </div>
+            <div class="block-subscribe-steps">
+                <form>
+                    <div class="block-content">
+                        <div class="input-box">
+                            <label for="bronto-email_100573" style="font-size:16px">*Your Email</label>
+                            <input type="text" class="input-text required-entry validate-email bronto-email js-bronto__email" size="35" name="100573" value="" placeholder="example@domain.com"  />
+                        </div>
+                        <div class="input-box">
+                            <div style="font-size:16px;margin-top:15px;">Share your birth month</div>                            <input type="hidden" name="100575[1005666]" value="true" />
+                              <a class="button bronto-submit js-bronto__submit" 
+                                data-bronto-id="bdesvvzobdptplqinvhpmmfrkogqbkp" 
+                                data-bronto-list="4eea2eeb-7702-4ec6-8b09-40c0fad1d06d">
+                                <span class="js-bronto__submit-label">Submit</span>
+                                <span class="js-bronto__success-label">Thank you!</span>
+                              </a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+                        <div class="block-footer std">
+              Valid for new email subscribers on their first purchase. Coupon cannot be combined with other promotions. By subscribing, you agree to our privacy policy.
+<div style="margin-top:20px;font-size:13px;text-align:center;text-transform:uppercase;"><a href="#" data-dismiss="modal" aria-hidden="true">No thanks!</a></div>            </div>
+            
+      </div><!-- /.modal-body -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal --><div class="modal-mobile js-bronto__modal" id="modal-mobile">
+  <div class="modal-mobile__wrap">
+    <div class="modal-mobile__header">
+      <h3>Sign up and get 10% Off</h3>
+      <a class="modal-mobile__close">&times;</a>
+    </div>
+    <div class="modal-mobile__content">
+<div class="modal-mobile__form">
+  <form id="modal-mobile__subscribe-form">
+    <div class="modal-mobile__field">
+      <input type="text" class="input-text required-entry validate-email mobile-bronto-email js-bronto__email" size="35" name="100573" value="" placeholder="Your Email Address" id="modal-subscribe-form-email"/>
+    </div>
+    <div class="modal-mobile__field">
+      <input type="hidden" name="100575[1005666]" value="true"/>
+      <a class="button mobile-bronto-submit js-bronto__submit" 
+        data-bronto-id="bdesvvzobdptplqinvhpmmfrkogqbkp" 
+        data-bronto-list="0bc003ec000000000000000000000014e40f">
+        <span class="js-bronto__submit-label">Submit</span>
+        <span class="js-bronto__success-label">Thank you!</span>
+      </a>
+    </div>
+  </form>
+</div>
+    </div>
+    <div class="modal-mobile__footer">
+New subscribers on first purchase. Coupon cannot be combined with other promotions. By subscribing, you agree to our privacy policy.
+    </div>
+  </div>
+</div>
+<script> 
+$j(document).ready(function() {
+
+  $j(".modal-mobile__close").on('click', function() {
+    $j(".modal-mobile").removeClass('show');
+  });
+
+}) 
+</script>
+<script type="text/javascript">
+//<![CDATA[
+
+    // settings
+    var mode = 'delay'; // scroll or delay  
+    var delay = 4000; // seconds to fire
+    var pct = 50; // pct of page to trigger
+    var ref = document.referrer;
+    var interval = 30;
+    var modalId = '#modal-mobile'
+    var cookieName = 'modalsub';
+    var bootstrapMode = false; // using bootstrap or not
+
+  enquire.register('screen and (max-width: 600px)', {
+      match: function () {
+      initModal(mode,delay,modalId,cookieName,interval);
+      },
+      unmatch: function () {
+        hideModal(modalId);
+      },
+  });
+
+
+    function createCookie(name,value,days) {
+      if (days) {
+            var date = new Date();
+            date.setTime(date.getTime()+(days*24*60*60*1000));
+            var expires = "; expires="+date.toGMTString();
+      }
+      else var expires = "";
+      document.cookie = name+"="+value+expires+"; path=/";
+
+      // testing that its actually set
+      var cookie = readCookie(name);
+      if(cookie === null){
+        return false;
+      }else{
+        return true;
+      }
+    }
+
+    function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+    }
+
+    function daysBetween(date1, date2) {
+        // The number of milliseconds in one day
+        var ONE_DAY = 1000 * 60 * 60 * 24
+        // Calculate the difference in milliseconds
+        var difference_ms = Math.abs(date1 - date2)
+        // Convert back to days and return
+        return Math.round(difference_ms/ONE_DAY)
+    }
+
+    function popModal(modalId,bootstrapMode){
+      if(bootstrapMode){
+      jQuery(modalId).modal('show');
+      }else{
+      jQuery(".modal-mobile").addClass('show');
+      } 
+    }
+
+    function hideModal(modalId,bootstrapMode){
+      if(bootstrapMode){
+      jQuery(modalId).modal('hide');
+      }else{
+      jQuery(".modal-mobile").removeClass('show');
+      } 
+    }
+
+    function popModal(modalId,bootstrapMode){
+      if(bootstrapMode){
+      jQuery(modalId).modal('show');
+      }else{
+      jQuery(".modal-mobile").addClass('show');
+      } 
+    }
+
+    function showModal(mode,delay,modalId,cookieName,bootstrapMode){
+
+      if(mode == 'scroll'){
+        modalShown = 0;
+        jQuery(window).scroll(function(e){
+          var scrollTop = jQuery(window).scrollTop();
+          var docHeight = jQuery(document).height();
+          var winHeight = jQuery(window).height();
+          var scrollPct = (scrollTop) / (docHeight - winHeight);
+          var scrollPctRounded = Math.round(scrollPct*100);
+          if(scrollPctRounded >= pct && modalShown == 0){
+            popModal(modalId,bootstrapMode);
+            modalShown = 1;
+          }
+        });
+
+      }else if(mode == 'delay'){
+        setTimeout(function() {
+          popModal(modalId,bootstrapMode);
+        }, delay); 
+      }
+      return false;
+    }
+
+  function localstorageTest() {
+      var mod = 'test';
+      try {
+          localStorage.setItem(mod, mod);
+          localStorage.removeItem(mod);
+          return true;
+      } catch(e) {
+          return false;
+      }
+  }
+
+    function initModal(mode,delay,modalId,cookieName,interval,bootstrapMode){
+
+      var enabledLocal = localstorageTest();
+
+      if (enabledLocal) {
+        // use local storage to show pop up only once
+
+        var cookie  = localStorage.getItem(cookieName); // get local storage
+        var today   = new Date();
+
+        if (cookie === null) {
+
+            // if no storage item
+            showModal(mode,delay,modalId,cookieName,bootstrapMode); // show subscribe
+            localStorage.setItem(cookieName, today); // set storage item today date
+
+        }else{
+
+           // we have a storage item - get it
+          var cookieDate  = Date.parse(cookie); // parse into epoch seconds
+          var todayDate   = Date.parse(today); // parse today into epoch seconds
+          var days        = daysBetween(todayDate,cookieDate); // get the difference in days
+
+          // if greater than = to ten days - redo the process
+          if(days >= interval){
+            showModal(mode,delay,modalId,cookieName,bootstrapMode); // show subscribe
+            localStorage.setItem(cookieName, today); // set local sto             
+          }
+
+        }
+
+     } else {
+
+        var cookie = readCookie(cookieName); // grab cookie
+
+        if (cookie === null) {
+
+            var created = createCookie(cookieName,1,interval);
+            if(created){
+              showModal(mode,delay,modalId,cookieName,bootstrapMode); 
+            }
+
+        }
+     }
+    }
+
+/*
+if (ref.match(/^https?:\/\/([^\/]+\.)?facebook\.com(\/|$)/i)) {
+  alert("Came from facebook");
+}
+
+if (ref.match(/^https?:\/\/([^\/]+\.)?facebook\.com(\/|$)/i)) {
+  alert("Came from localhost");
+}
+*/
+
+/*
+The regexp:
+
+/^           # ensure start of string
+ http        # match 'http'
+ s?          # 's' if it exists is okay
+ :\/\/       # match '://'
+ ([^\/]+\.)? # match any non '/' chars followed by a '.' (if they exist)
+ reddit\.com # match 'reddit.com'
+ (\/|$)      # match '/' or the end of the string
+/i           # match case-insenitive
+
+*/
+  
+//]]>
+</script><script> 
+$j(document).ready(function() {
+
+  // wires up all bronto forms
+  var brontoSubmit = $j('.js-bronto__submit'); 
+
+  // submit on enter key
+  $j('.js-bronto__email').keypress(function (e) {
+    if (e.which == 13) {
+      var brontoClick = $j(this).closest('form').find('.js-bronto__submit');
+      brontoClick.click();
+      return false; 
+    }
+  });
+
+  // on click of submit button do this
+  brontoSubmit.on('click', function(e) {
+
+    // stop submission
+    e.preventDefault();
+
+    var brontoButton = $j('.js-bronto__submit');
+
+    // grab data
+    var thisForm  = $j(this).closest("form");
+    var thisModal   = $j(this).closest('.js-bronto__modal');
+    var brontoEmail = thisForm.find('.js-bronto__email').val();
+    var brontoEmailField = thisForm.find('.js-bronto__email')[0]; // this is for validation to work
+
+    console.log(thisModal);
+
+    // set bronto values
+    var bronto_id   = $j(this).data('bronto-id');
+    var list        = $j(this).data('bronto-list');
+
+    // validate 
+    if (Validation.validate(brontoEmailField)) {
+
+      // set progress state
+      brontoButton.addClass('js-bronto__submit-progress');
+
+      // encode values for url
+      var listName = encodeURIComponent(list);
+
+      // create directAdd image
+      var directAdd = new Image();
+      // set directAdd source
+      directAdd.src = "//app.bronto.com/public/?q=direct_add&fn=Public_DirectAddForm&id=" + bronto_id 
+      + "&email=" + encodeURIComponent(brontoEmail)
+      + "&list2=" + list;
+
+            directAdd.onload = function() {
+
+            // after image is loaded and data send
+            // hide form
+            // show thanks
+            // hide modal
+            brontoButton.removeClass('js-bronto__submit-progress');
+            brontoButton.addClass('js-bronto__submit-success');
+
+          setTimeout(function() {
+            thisModal.removeClass('show');
+            thisForm.each(function() {
+              this.reset();
+            });
+          }, 2000); 
+
+          setTimeout(function() {
+              brontoButton.removeClass('js-bronto__submit-success');
+            }, 3000); 
+          }
+    }
+  })
+}) 
+</script>
+                    <script type="text/javascript">
+                        var bLazy = null;
+                        $j(document).ready(function() {
+                            bLazy = new Blazy({
+                                selector: '.lazyload img',
+                                success: function(element){
+                                        var parent = element.parentNode;
+                                        parent.className = parent.className.replace(/\blazyloading\b/,'');
+                                }
+                            });
+                        });
+                        $j(document).ajaxStop(function(){
+                            bLazy.revalidate();
+                        });
+                    </script>
+                        </div>
+</div>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"2b82afe865","applicationID":"16234770","transactionName":"ZFYAMUZTXksABkIKX10cIwZAW19WTgFTEFlUXQcXG1teXAQdGQpeV1Ya","queueTime":0,"applicationTime":1288,"atts":"SBEDRw5JTUU=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+
