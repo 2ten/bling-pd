@@ -122,8 +122,6 @@ GoMage.ProductDesigner = function (config, continueUrl, loginUrl, registrationUr
     this._toggleControlsButtons();
     this._toggleHistoryButtons();
 
-    this.observeSubTabs(); // mmc 2ten monogram sub tabs
-
 }
 
 GoMage.ProductDesigner.prototype = {
@@ -577,57 +575,6 @@ GoMage.ProductDesigner.prototype = {
                     tabContentElement.setStyle({display: 'block'});
                 }
             }
-        }.bind(this));
-    },
-    // mmc 2ten monogram added for text/monogram tab switching
-    observeSubTabs: function () {
-        $('subtab-nav').childElements().invoke('observe', 'click', function (e) {
-
-
-            var elm = e.target || e.srcElement;
-            elm = elm.up('button.subtab-nav__button') || elm;
-            elm.siblings().invoke('removeClassName', 'active');
-            elm.addClassName('active');
-            var buttonId = elm.id;
-            var tabContentElement = $(buttonId + '-content');
-
-            // clear canvas
-            for (var canvas in this.containerCanvases) {
-                this.containerCanvases[canvas].clear();
-            }
-
-            // clear form fields
-            jQuery('#monogram_text').val('');
-            jQuery('#add_text_textarea').val('');
-
-            if (tabContentElement) {
-                // if (buttonId == 'pd_add_text') {
-                //     var event = document.createEvent('Event');
-                //     event.initEvent('textTabShow', true, true);
-                //     document.dispatchEvent(event);
-                // }
-                tabContentElement.siblings().invoke('setStyle', {display: 'none'});
-
-                // mmc not sure the event stuff here is needed
-                if (buttonId == 'subtab_text') {
-                    jQuery('#design_type').val("text");
-                    
-                    document.getElementById("add_text_textarea").maxLength = 10; // todo get from real settings reset maxlen 
-                    // mmc 2ten if this is removed, works if don't interact with monogram form field
-                    // mmc 2ten todo decide if this is necessary
-                    var event = document.createEvent('Event');
-                    event.initEvent('textTabShow', true, true);
-                    document.dispatchEvent(event);
-                    //GoMage.TextEditor.prototype.observeMonogramTab();
-                } else if (buttonId == 'subtab_monogram') { // mmc 2ten todo changed
-                    jQuery('#design_type').val("monogram");
-                }
-
-                if (tabContentElement.getStyle('display') == 'none') {
-                    tabContentElement.setStyle({display: 'block'});
-                }
-            }
-
         }.bind(this));
     },
     //@Fahad: function to resize the current canvas based on the window size and canvas product size and current view
