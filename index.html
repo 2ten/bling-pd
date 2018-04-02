@@ -175,8 +175,34 @@ margin-right:auto;
 .ps-note-add-pics { display: none; }
 </style>
 
+<!--Style for dropdown monogram by Raj-->
+<style>
+#font-selectorSelectBoxItOptions li[data-val="Circle-Monograms-Three-White-Alt"] a span {
+    font-family: inherit!important;
+}
 
+#font-selectorSelectBoxItOptions li[data-val="Circle-Monograms-Two-White"] a span {
+    font-family: inherit!important;
+}
 
+#font-selectorSelectBoxItOptions li[data-val="monogram-kk-sc"] a span {
+    font-family: inherit!important;
+}
+
+#font-selectorSelectBoxItText[data-val="Circle-Monograms-Three-White-Alt"] span{
+	font-family: inherit!important;
+}
+
+#font-selectorSelectBoxItText[data-val="Circle-Monograms-Two-White"] span{
+	font-family: inherit!important;
+}
+
+#font-selectorSelectBoxItText[data-val="monogram-kk-sc"] span{
+	font-family: inherit!important;
+}
+
+</style>
+<!--End-->
 
 <meta property="og:site_name" content="BlingJewelry.com"/>
 <meta property="og:title" content="GoMage Test | Bling Jewelry"/>
@@ -1086,18 +1112,18 @@ display:block;
 <!-- mmc 2ten monogram declare the monogram fonts -->
 <style type="text/css">
 
-    @font-face{font-family:Circle3;src:url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/monogram/Circle Monograms Three White Alt.ttf")}
+    @font-face{font-family:Circle3;src:url("http://localhost/bling-pd-master/fonts/Circle Monograms Three White Alt.ttf")}
 
-    @font-face{font-family:Circle2;src:url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/monogram/Circle Monograms Two White.ttf")}
+    @font-face{font-family:Circle2;src:url("http://localhost/bling-pd-master/fonts/Circle Monograms Two White.ttf")}
 
-    @font-face{font-family:Monoscript;src:url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/monogram/monogram kk sc.ttf")}
+    @font-face{font-family:Monoscript;src:url("http://localhost/bling-pd-master/fonts/monogram kk sc.ttf")}
 
 </style>
 
 <!-- mmc 2ten monogram these are the text/monogram tabs -->
 <div class="subtab-nav" id="subtab-nav">
     <button class="subtab-nav__button active" id="subtab_text"><span><span>Text</span></span></button>
-    <button class="subtab-nav__button" id="subtab_monogram"><span><span>Monogram</span></span></button>
+    <!--<button class="subtab-nav__button" id="subtab_monogram"><span><span>Monogram</span></span></button>-->
 </div>
 <div class="subtab-wrap">
     <div class="subtab subtab-text" id="subtab_text-content">
@@ -1108,39 +1134,39 @@ display:block;
 <style type="text/css">
     @font-face {
         font-family: Tangerine;
-        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/t/a/tangerine-regular.ttf");
+        src: url("http://localhost/bling-pd-master/fonts/tangerine-regular.ttf");
     }
     @font-face {
         font-family: Playball;
-        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/p/l/playball-regular.ttf");
+        src: url("http://localhost/bling-pd-master/fonts/playball-regular.ttf");
     }
     @font-face {
         font-family: Sacramento;
-        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/s/a/sacramento-regular.ttf");
+        src: url("http://localhost/bling-pd-master/fonts/sacramento-regular.ttf");
     }
     @font-face {
         font-family: Cormorant SC SemiBold;
-        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/c/o/cormorantsc-semibold.ttf");
+        src: url("http://localhost/bling-pd-master/fonts/cormorantsc-semibold.ttf");
     }
     @font-face {
         font-family: Nimbus Roman No9 L;
-        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/n/i/nimbusromno9l-reg.otf");
+        src: url("http://localhost/bling-pd-master/fonts/nimbusromno9l-reg.otf");
     }
     @font-face {
         font-family: Liberation Sans;
-        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/l/i/liberationsans-regular.ttf");
+        src: url("http://localhost/bling-pd-master/fonts/liberationsans-regular.ttf");
     }
     @font-face {
         font-family: Circle-Monograms-Three-White-Alt;
-        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/c/i/circle-monograms-three-white-alt.ttf");
+        src: url("http://localhost/bling-pd-master/fonts/circle-monograms-three-white-alt.ttf");
     }
     @font-face {
         font-family: Circle-Monograms-Two-White;
-        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/c/i/circle-monograms-two-white.ttf");
+        src: url("http://localhost/bling-pd-master/fonts/circle-monograms-two-white.ttf");
     }
     @font-face {
         font-family: monogram-kk-sc;
-        src: url("http://dev.blingjewelry.com/media/gomage/productdesigner/fonts/m/o/monogram-kk-sc.ttf");
+        src: url("http://localhost/bling-pd-master/fonts/monogram-kk-sc.ttf");
     }
 </style>
 
@@ -1264,7 +1290,7 @@ display:block;
     </div>
     <div class="pd-element-wrapper pd-custom-text-wrapper">
         
-                    <input type="text" id="add_text_textarea" class="pd-textarea" placeholder="Enter text here" />
+                    <input type="text" id="add_text_textarea"  class="pd-textarea" placeholder="Enter text here" />
             </div>
     <div class="pd-element-wrapper pd-add-text-actions">
         <button id="add_text_button" class="pd-btn pd-btn-add-text">Add Text</button>

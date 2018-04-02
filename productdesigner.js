@@ -193,7 +193,11 @@ GoMage.ProductDesigner.prototype = {
     },
 
     upperCaseLastLetter: function (vm, initials) {
-        if (initials.length === 2) {
+        if (initials.length === 1) {
+            return (
+                initials[0].toUpperCase()
+            );
+        }else if (initials.length === 2) {
             return (
                 initials[0].toLowerCase() +
                 initials[1].toUpperCase()
@@ -223,6 +227,15 @@ GoMage.ProductDesigner.prototype = {
                 initials[1].toUpperCase() +
                 vm.characterMap[initials[2].toLowerCase()]
             );
+        }else if (initials.length === 2) {
+            return (
+                initials[0].toLowerCase() +
+                vm.characterMap[initials[1].toLowerCase()]
+            );
+        }else if (initials.length === 1) {
+            return (
+                vm.characterMap[initials[0].toLowerCase()]
+            );
         } else {
             return '';
         }
@@ -251,6 +264,7 @@ GoMage.ProductDesigner.prototype = {
         if (font) {
             initials = vm.updateText(font, initials);
             initials = font.translator(vm, initials, font);
+            
             // certain fonts require prefix - don't think we will need this
             if (initials)
                 return font.prefix + initials;
@@ -290,7 +304,7 @@ GoMage.ProductDesigner.prototype = {
                 sizeReduction: 1,
                 top: 5, // mmc 2ten top position on canvas
                 translator: vm.specialThirdLetter,
-                minChars: 3,
+                minChars: 1,
                 maxChars: 3,
             },
             '32A': {
@@ -299,7 +313,7 @@ GoMage.ProductDesigner.prototype = {
                 sizeReduction: 1,
                 top: 5, // mmc 2ten top position on canvas
                 translator: vm.upperCaseLastLetter,
-                minChars: 2,
+                minChars: 1,
                 maxChars: 2,
             },
             // mmc 2ten monogram - below are not in use 
@@ -2340,6 +2354,19 @@ GoMage.TextEditor.prototype = {
         jQuery("select#font-selector").bind({
             "change": function(ev, obj) {
                 var elem = jQuery(this).val();
+                if(elem == 'Circle-Monograms-Three-White-Alt'){
+                    jQuery("#add_text_textarea").attr("maxlength",3);
+                    jQuery('#font_code').val("30A");
+                }else if(elem == 'Circle-Monograms-Two-White'){
+                    jQuery("#add_text_textarea").attr("maxlength",2);
+                    jQuery('#font_code').val("32A");
+                }else if(elem == 'monogram-kk-sc'){
+                    jQuery("#add_text_textarea").attr("maxlength",3);
+                    jQuery('#font_code').val("1");
+                }else{
+                    jQuery("#add_text_textarea").removeAttr("maxlength");
+                }
+
                 var obj = window.pd.canvas.getActiveObject();
                 if (obj && obj.type == 'text') {
                     var cmd = new TransformCommand(window.pd.canvas, obj, {fontFamily: elem});
@@ -2434,7 +2461,6 @@ GoMage.TextEditor.prototype = {
         }.bind(this));
 
         this.addTextTextarea.observe('keyup', function (e) {
-
             var obj = this.productDesigner.canvas.getActiveObject();
             if (!obj || obj.type != 'text') {
 
@@ -2451,21 +2477,8 @@ GoMage.TextEditor.prototype = {
 
                if(valid) //if the entered text is printable text
                {
-
-
-
-// RajNew
-/*
-    This code works on the first letter typed only, to create the textObject
-    I was thinking to check if monogram font, then if monogram font try to translate the character typed
-    See the functions below this one isMonogram and monogramTranslate
-    Doesn't work as expected.
-*/
                     var text = this.addTextTextarea.value;
-
-
                    // mmc 2ten monogram todo function that processes test thru correct filter if isMonogram
-
                    var textObjectData = {
                        fontSize: parseInt(this.fontSizeSelector.value),
                        fontFamily: this.fontSelector.value,
@@ -2525,6 +2538,9 @@ GoMage.TextEditor.prototype = {
                }
             }
 
+            //For first case when object created input box
+            var obj = this.productDesigner.canvas.getActiveObject();
+            
             if (timeout != 'undefined' || timeout != null) {
                 clearTimeout(timeout);
             }
@@ -2537,25 +2553,19 @@ GoMage.TextEditor.prototype = {
                 }
                 var currentValue = elem.value;
                 if (obj && obj.type == 'text') {
-                    if (currentValue != obj.getText()) {
-
-
-
+                    //if (currentValue != obj.getText()) {
                         // RajNew
                         // mmc 2ten monogram todo need a function that translates monogram font
                         var isMonogram = this.isMonogram(this.fontSelector.value);
                         if(isMonogram){
                             currentValue = this.monogramTranslate(currentValue);
                         }
-
-
-
-
+                        
                         var cmd = new TransformCommand(this.productDesigner.canvas, obj, {text: currentValue});
                         cmd.exec();
                         obj.center(); //@Fahad: Center the text while typing
                         this.productDesigner.history.push(cmd);
-                    }
+                    //}
                 }
             }.bind(this), 10);
         }.bind(this));
@@ -2576,10 +2586,10 @@ isMonogram: function(font){
 monogramTranslate: function(text){
     // get the font we are using
     var font_code = jQuery('#font_code').val();
-
+    
     // set the family, getting info from the function that stores the font info
     var font_family = this.productDesigner.getMonogramFont(font_code);
-
+    
     // set default family
     if (!font_family) {
         font_code = '30A';
