@@ -195,7 +195,7 @@ GoMage.ProductDesigner.prototype = {
     upperCaseLastLetter: function (vm, initials) {
         if (initials.length === 1) {
             return (
-                initials[0].toUpperCase()
+                initials[0].toLowerCase()
             );
         }else if (initials.length === 2) {
             return (
@@ -229,12 +229,13 @@ GoMage.ProductDesigner.prototype = {
             );
         }else if (initials.length === 2) {
             return (
-                initials[0].toLowerCase() +
-                vm.characterMap[initials[1].toLowerCase()]
+                initials[0].toLowerCase() + initials[1].toUpperCase()
+                //vm.characterMap[initials[1].toLowerCase()]
             );
         }else if (initials.length === 1) {
             return (
-                vm.characterMap[initials[0].toLowerCase()]
+                //vm.characterMap[initials[0].toLowerCase()]
+                initials[0].toLowerCase()
             );
         } else {
             return '';
