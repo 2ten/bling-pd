@@ -2303,16 +2303,16 @@ GoMage.TextEditor.prototype = {
             "change": function(ev, obj) {
                 var elem = jQuery(this).val();
                 if(elem == 'Circle-Monograms-Three-White-Alt'){
-                    jQuery("#add_text_textarea").attr("maxlength",3);
+                    jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');
                     jQuery('#font_code').val("30A");
                 }else if(elem == 'Circle-Monograms-Two-White'){
-                    jQuery("#add_text_textarea").attr("maxlength",2);
+                    jQuery("#add_text_textarea").attr("maxlength",2).addClass('input-monogram');
                     jQuery('#font_code').val("32A");
                 }else if(elem == 'monogram-kk-sc'){
-                    jQuery("#add_text_textarea").attr("maxlength",3);
+                    jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');;
                     jQuery('#font_code').val("1");
                 }else{
-                    jQuery("#add_text_textarea").removeAttr("maxlength");
+                    jQuery("#add_text_textarea").removeAttr("maxlength").removeClass('input-monogram');
                 }
 
                 var obj = window.pd.canvas.getActiveObject();
