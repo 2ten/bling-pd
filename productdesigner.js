@@ -2337,15 +2337,15 @@ GoMage.TextEditor.prototype = {
             }
         });
         //No longer needed this as we now have binded the selectBoxIt dropdown's change event
-        this.fontSelector.observe('change', function (e) {
-            var elem = e.target || e.srcElement;
-            var obj = this.productDesigner.canvas.getActiveObject();
-            if (obj && obj.type == 'text') {
-                var cmd = new TransformCommand(this.productDesigner.canvas, obj, {fontFamily: elem.value});
-                cmd.exec();
-                this.productDesigner.history.push(cmd);
-            }
-        }.bind(this));
+        // this.fontSelector.observe('change', function (e) {
+        //     var elem = e.target || e.srcElement;
+        //     var obj = this.productDesigner.canvas.getActiveObject();
+        //     if (obj && obj.type == 'text') {
+        //         var cmd = new TransformCommand(this.productDesigner.canvas, obj, {fontFamily: elem.value});
+        //         cmd.exec();
+        //         this.productDesigner.history.push(cmd);
+        //     }
+        // }.bind(this));
     },
 
     getTextColor: function () {
@@ -2916,19 +2916,40 @@ monogramTranslate: function(text){
 
     _setInputValues: function (textObj) {
 
+        // mmc 2ten todo - try to reset the other side to a default
+        // on the first click to that side
         this._changeTextButtonLabel(textObj);
         for (var property in this.fieldsMap) {
+
             if (this.fieldsMap.hasOwnProperty(property) && this.fieldsMap[property]) {
+
                 var field = this.fieldsMap[property];
-                var objText = textObj[property];
-                if(property==='text'){
-                    objText = this._convertMonoToSimpleText(textObj);
+
+                if(property == 'fontFamily'){
+
+                    fontFamilyValue = textObj ? textObj[property]  : this.defaultTextOpt[property];
+                    jQuery("#font-selector").val(fontFamilyValue).change();
+
+                }else if(property == 'fontSize'){
+
+                    fontSizeValue = textObj ? textObj[property]  : this.defaultTextOpt[property];
+                    jQuery("#font_size_selector").val(fontSizeValue).change();
+
+                }else{
+
+                    field.value = textObj ? textObj[property] : this.defaultTextOpt[property];
                 }
-                field.value = textObj ? objText : this.defaultTextOpt[property];
+                
+                // var objText = textObj[property];
+                // if(property==='text'){
+                //     objText = this._convertMonoToSimpleText(textObj);
+                // }
+                // field.value = textObj ? objText : this.defaultTextOpt[property];
             }
         }
 
         if (textObj) {
+
             this.changeControlState(this.addTextBtnBold, textObj.get('fontWeight') == 'bold');
             this.changeControlState(this.addTextBtnItalic, textObj.get('fontStyle') == 'italic');
             this.changeControlState(this.addTextBtnUnderline, textObj.get('textDecoration').indexOf('underline') >= 0);
