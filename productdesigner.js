@@ -193,7 +193,8 @@ GoMage.ProductDesigner.prototype = {
     upperCaseLastLetter: function (vm, initials) {
         if (initials.length === 1) {
             return (
-                initials[0].toLowerCase()
+                //initials[0].toLowerCase()
+                initials[0].toUpperCase()
             );
         }else if (initials.length === 2) {
             return (
@@ -227,13 +228,11 @@ GoMage.ProductDesigner.prototype = {
             );
         }else if (initials.length === 2) {
             return (
-                initials[0].toLowerCase() + initials[1].toUpperCase()
-                //vm.characterMap[initials[1].toLowerCase()]
+                initials[0].toLowerCase() + vm.characterMap[initials[1].toLowerCase()]
             );
         }else if (initials.length === 1) {
             return (
-                //vm.characterMap[initials[0].toLowerCase()]
-                initials[0].toLowerCase()
+                vm.characterMap[initials[0].toLowerCase()]
             );
         } else {
             return '';
@@ -2301,24 +2300,37 @@ GoMage.TextEditor.prototype = {
         //Bind the change event for selectBoxIt
         jQuery("select#font-selector").bind({
             "change": function(ev, obj) {
+                var isObjectMonoType = false;
                 var elem = jQuery(this).val();
                 if(elem == 'Circle-Monograms-Three-White-Alt'){
                     jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');
                     jQuery('#font_code').val("30A");
+                    jQuery("#add_text_textarea").val("");
+                    isObjectMonoType = true;
                 }else if(elem == 'Circle-Monograms-Two-White'){
                     jQuery("#add_text_textarea").attr("maxlength",2).addClass('input-monogram');
                     jQuery('#font_code').val("32A");
+                    jQuery("#add_text_textarea").val("");
+                    isObjectMonoType = true;
                 }else if(elem == 'monogram-kk-sc'){
                     jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');;
                     jQuery('#font_code').val("1");
+                    jQuery("#add_text_textarea").val("");
+                    isObjectMonoType = true;
                 }else{
                     jQuery("#add_text_textarea").removeAttr("maxlength").removeClass('input-monogram');
+                    isObjectMonoType = false;
                 }
 
                 var obj = window.pd.canvas.getActiveObject();
                 if (obj && obj.type == 'text') {
                     var cmd = new TransformCommand(window.pd.canvas, obj, {fontFamily: elem});
                     cmd.exec();
+                    if(isObjectMonoType){
+                        var c = window.pd.canvas;
+                        c.remove(obj);
+                        c.renderAll();
+                    }
                     window.pd.history.push(cmd);
                 }
 
@@ -2857,13 +2869,62 @@ monogramTranslate: function(text){
         }
     },
 
+    /*By Raj*/
+    _convertMonoToSimpleText: function (textObj){
+        var font = (textObj.fontFamily);
+        var text = (textObj.text);
+        console.log(text);
+        /* monogram helper functions */
+        var characterMap= {
+            '1': 'a',
+            '2': 'b',
+            '3': 'c',
+            '4': 'd',
+            '5': 'e',
+            '6': 'f',
+            '7': 'g',
+            '8': 'h',
+            '9': 'i',
+            '0': 'j',
+            '!': 'k',
+            '@': 'l',
+            '#': 'm',
+            '$': 'n',
+            '%': 'o',
+            '^': 'p',
+            '&': 'q',
+            '*': 'r',
+            '(': 's',
+            ')': 't',
+            '-': 'u',
+            '=': 'v',
+            '{': 'w',
+            '}': 'x',
+            '\\': 'y',
+            ':': 'z'
+        }
+
+        var fontNameLower = font.toLowerCase();
+        if(fontNameLower == 'circle-monograms-three-white-alt'){
+            var lastChar = text[text.length -1];
+            var translatedChar = (characterMap[lastChar]!=undefined) ? characterMap[lastChar]: '';
+            var newString = text.slice(0, 2)+ translatedChar;
+            return newString.toLowerCase();
+        }
+        return false;
+    },
+
     _setInputValues: function (textObj) {
 
         this._changeTextButtonLabel(textObj);
         for (var property in this.fieldsMap) {
             if (this.fieldsMap.hasOwnProperty(property) && this.fieldsMap[property]) {
                 var field = this.fieldsMap[property];
-                field.value = textObj ? textObj[property] : this.defaultTextOpt[property];
+                var objText = textObj[property];
+                if(property==='text'){
+                    objText = this._convertMonoToSimpleText(textObj);
+                }
+                field.value = textObj ? objText : this.defaultTextOpt[property];
             }
         }
 
