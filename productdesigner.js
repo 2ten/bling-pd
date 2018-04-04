@@ -122,6 +122,8 @@ GoMage.ProductDesigner = function (config, continueUrl, loginUrl, registrationUr
     this._toggleControlsButtons();
     this._toggleHistoryButtons();
 
+    this.observeSubTabs(); // mmc 2ten monogram sub tabs
+
 }
 
 GoMage.ProductDesigner.prototype = {
@@ -193,7 +195,7 @@ GoMage.ProductDesigner.prototype = {
     upperCaseLastLetter: function (vm, initials) {
         if (initials.length === 1) {
             return (
-                initials[0].toLowerCase()
+                initials[0].toUpperCase()
             );
         }else if (initials.length === 2) {
             return (
@@ -227,13 +229,12 @@ GoMage.ProductDesigner.prototype = {
             );
         }else if (initials.length === 2) {
             return (
-                initials[0].toLowerCase() + initials[1].toUpperCase()
-                //vm.characterMap[initials[1].toLowerCase()]
+                initials[0].toLowerCase() +
+                vm.characterMap[initials[1].toLowerCase()]
             );
         }else if (initials.length === 1) {
             return (
-                //vm.characterMap[initials[0].toLowerCase()]
-                initials[0].toLowerCase()
+                vm.characterMap[initials[0].toLowerCase()]
             );
         } else {
             return '';
@@ -575,6 +576,57 @@ GoMage.ProductDesigner.prototype = {
                     tabContentElement.setStyle({display: 'block'});
                 }
             }
+        }.bind(this));
+    },
+    // mmc 2ten monogram added for text/monogram tab switching
+    observeSubTabs: function () {
+        $('subtab-nav').childElements().invoke('observe', 'click', function (e) {
+
+
+            var elm = e.target || e.srcElement;
+            elm = elm.up('button.subtab-nav__button') || elm;
+            elm.siblings().invoke('removeClassName', 'active');
+            elm.addClassName('active');
+            var buttonId = elm.id;
+            var tabContentElement = $(buttonId + '-content');
+
+            // clear canvas
+            for (var canvas in this.containerCanvases) {
+                this.containerCanvases[canvas].clear();
+            }
+
+            // clear form fields
+            jQuery('#monogram_text').val('');
+            jQuery('#add_text_textarea').val('');
+
+            if (tabContentElement) {
+                // if (buttonId == 'pd_add_text') {
+                //     var event = document.createEvent('Event');
+                //     event.initEvent('textTabShow', true, true);
+                //     document.dispatchEvent(event);
+                // }
+                tabContentElement.siblings().invoke('setStyle', {display: 'none'});
+
+                // mmc not sure the event stuff here is needed
+                if (buttonId == 'subtab_text') {
+                    jQuery('#design_type').val("text");
+                    
+                    document.getElementById("add_text_textarea").maxLength = 10; // todo get from real settings reset maxlen 
+                    // mmc 2ten if this is removed, works if don't interact with monogram form field
+                    // mmc 2ten todo decide if this is necessary
+                    var event = document.createEvent('Event');
+                    event.initEvent('textTabShow', true, true);
+                    document.dispatchEvent(event);
+                    //GoMage.TextEditor.prototype.observeMonogramTab();
+                } else if (buttonId == 'subtab_monogram') { // mmc 2ten todo changed
+                    jQuery('#design_type').val("monogram");
+                }
+
+                if (tabContentElement.getStyle('display') == 'none') {
+                    tabContentElement.setStyle({display: 'block'});
+                }
+            }
+
         }.bind(this));
     },
     //@Fahad: function to resize the current canvas based on the window size and canvas product size and current view
@@ -2301,24 +2353,39 @@ GoMage.TextEditor.prototype = {
         //Bind the change event for selectBoxIt
         jQuery("select#font-selector").bind({
             "change": function(ev, obj) {
+                var isObjectMonoType = false;
                 var elem = jQuery(this).val();
                 if(elem == 'Circle-Monograms-Three-White-Alt'){
-                    jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');
+                    jQuery("#add_text_textarea").attr("maxlength",3);
                     jQuery('#font_code').val("30A");
+                    jQuery("#add_text_textarea").val("");
+                    isObjectMonoType = true;
+                    
                 }else if(elem == 'Circle-Monograms-Two-White'){
-                    jQuery("#add_text_textarea").attr("maxlength",2).addClass('input-monogram');
+                    jQuery("#add_text_textarea").attr("maxlength",2);
                     jQuery('#font_code').val("32A");
+                    jQuery("#add_text_textarea").val("");
+                    isObjectMonoType = true;
                 }else if(elem == 'monogram-kk-sc'){
-                    jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');;
+                    jQuery("#add_text_textarea").attr("maxlength",3);
                     jQuery('#font_code').val("1");
+                    jQuery("#add_text_textarea").val("");
+                    isObjectMonoType = true;
                 }else{
-                    jQuery("#add_text_textarea").removeAttr("maxlength").removeClass('input-monogram');
+                    jQuery("#add_text_textarea").removeAttr("maxlength");
+                    isObjectMonoType = false;
                 }
 
                 var obj = window.pd.canvas.getActiveObject();
                 if (obj && obj.type == 'text') {
                     var cmd = new TransformCommand(window.pd.canvas, obj, {fontFamily: elem});
                     cmd.exec();
+
+                    if(isObjectMonoType){
+                        var c = window.pd.canvas;
+                        c.remove(obj);
+                        c.renderAll();
+                    }
                     window.pd.history.push(cmd);
                 }
 
@@ -2428,7 +2495,8 @@ GoMage.TextEditor.prototype = {
                     var text = this.addTextTextarea.value;
                    // mmc 2ten monogram todo function that processes test thru correct filter if isMonogram
                    var textObjectData = {
-                       fontSize: parseInt(this.fontSizeSelector.value),
+                       //fontSize: parseInt(this.fontSizeSelector.value),
+                       fontSize: 75,
                        fontFamily: this.fontSelector.value,
                        lineHeight: 1,
                        hasControls: $j('#pd_container').data('has-controls'),
@@ -2857,13 +2925,61 @@ monogramTranslate: function(text){
         }
     },
 
-    _setInputValues: function (textObj) {
+    /*By Raj*/
+    _convertMonoToSimpleText: function (textObj){
+        var font = (textObj.fontFamily);
+        var text = (textObj.text);
+        console.log(text);
+        /* monogram helper functions */
+        var characterMap= {
+            '1': 'a',
+            '2': 'b',
+            '3': 'c',
+            '4': 'd',
+            '5': 'e',
+            '6': 'f',
+            '7': 'g',
+            '8': 'h',
+            '9': 'i',
+            '0': 'j',
+            '!': 'k',
+            '@': 'l',
+            '#': 'm',
+            '$': 'n',
+            '%': 'o',
+            '^': 'p',
+            '&': 'q',
+            '*': 'r',
+            '(': 's',
+            ')': 't',
+            '-': 'u',
+            '=': 'v',
+            '{': 'w',
+            '}': 'x',
+            '\\': 'y',
+            ':': 'z'
+        }
 
+        var fontNameLower = font.toLowerCase();
+        if(fontNameLower == 'circle-monograms-three-white-alt'){
+            var lastChar = text[text.length -1];
+            var translatedChar = (characterMap[lastChar]!=undefined) ? characterMap[lastChar]: '';
+            var newString = text.slice(0, 2)+ translatedChar;
+            return newString.toLowerCase();
+        }
+        return false;
+    },
+
+    _setInputValues: function (textObj) {
         this._changeTextButtonLabel(textObj);
         for (var property in this.fieldsMap) {
             if (this.fieldsMap.hasOwnProperty(property) && this.fieldsMap[property]) {
                 var field = this.fieldsMap[property];
-                field.value = textObj ? textObj[property] : this.defaultTextOpt[property];
+                var objText = textObj[property];
+                if(property==='text'){
+                    objText = this._convertMonoToSimpleText(textObj);
+                }
+                field.value = textObj ? objText : this.defaultTextOpt[property];
             }
         }
 
