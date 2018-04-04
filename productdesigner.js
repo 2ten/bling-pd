@@ -2929,16 +2929,18 @@ monogramTranslate: function(text){
 
                     fontFamilyValue = textObj ? textObj[property]  : this.defaultTextOpt[property];
                     jQuery("#font-selector").val(fontFamilyValue).change();
+                    
+                }
 
-                }else if(property == 'fontSize'){
+                if(property == 'fontSize'){
 
                     fontSizeValue = textObj ? textObj[property]  : this.defaultTextOpt[property];
                     jQuery("#font_size_selector").val(fontSizeValue).change();
 
-                }else{
-
-                    field.value = textObj ? textObj[property] : this.defaultTextOpt[property];
                 }
+
+                field.value = textObj ? textObj[property] : this.defaultTextOpt[property];
+
                 
                 // var objText = textObj[property];
                 // if(property==='text'){
