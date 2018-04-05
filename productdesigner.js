@@ -3008,7 +3008,6 @@ monogramTranslate: function(text){
                 var field = this.fieldsMap[property];
                 var objText = textObj[property];
                 if(property==='text' && fontNameLower == 'circle-monograms-three-white-alt'){
-                    console.log('yo');
                     objText = _convertMonoToSimpleText(textObj); 
                 }
                 field.value = textObj ? objText : this.defaultTextOpt[property];
