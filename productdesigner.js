@@ -58,6 +58,59 @@ var ProductDesignerGlobalEval = function ProductDesignerGlobalEval(src) {
     fn();
 };
 
+/*By Raj*/
+_convertMonoToSimpleText =  function (textObj){
+    var font = (textObj.fontFamily);
+    var text = (textObj.text);
+    /* monogram helper functions */
+    var characterMap= {
+        '1': 'a',
+        '2': 'b',
+        '3': 'c',
+        '4': 'd',
+        '5': 'e',
+        '6': 'f',
+        '7': 'g',
+        '8': 'h',
+        '9': 'i',
+        '0': 'j',
+        '!': 'k',
+        '@': 'l',
+        '#': 'm',
+        '$': 'n',
+        '%': 'o',
+        '^': 'p',
+        '&': 'q',
+        '*': 'r',
+        '(': 's',
+        ')': 't',
+        '-': 'u',
+        '=': 'v',
+        '{': 'w',
+        '}': 'x',
+        '\\': 'y',
+        ':': 'z'
+    }
+
+    var newString = ""; 
+    if(text.length===1){
+        var isSpecialChar = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(text);
+        var isnum = /^\d+$/.test(text);
+        if(isnum || isSpecialChar){
+            translatedChar = (characterMap[text]!=undefined) ? characterMap[text]: '';
+        }else{
+            translatedChar = text;
+        }
+        newString = translatedChar;
+    }else{
+        var lastChar = text[text.length -1];
+        var translatedChar = (characterMap[lastChar]!=undefined) ? characterMap[lastChar]: '';
+        newString = text.slice(0, (text.length -1))+ translatedChar;
+    }
+    return newString.toLowerCase();
+
+};
+
 Event.observe(window, "resize", function() {
     var width = document.viewport.getWidth();
     var height = document.viewport.getHeight();
@@ -772,7 +825,8 @@ GoMage.ProductDesigner.prototype = {
             this.canvas.getObjects().each(function (object) {
                 if (object.type == 'text') {
                     currentCanvas.setActiveObject(object);
-                    jQuery("#add_text_textarea").val(object.text);
+                    var objSimpleText = _convertMonoToSimpleText(object);
+                    jQuery("#add_text_textarea").val(objSimpleText);
                 }
             });
         }
@@ -1369,7 +1423,6 @@ GoMage.ProductDesigner.prototype = {
 
     observeProductImageChange: function () {
         Event.on($(this.opt.product_side_id), 'click', '.product-image', function (e, elem) {
-            console.log("Change the canvas");
             elem.up('li').addClassName('active');
             elem.up('li').siblings().invoke('removeClassName', 'active');
             //Remove selected objected first before switching to other - By Raj - apr-2018
@@ -2492,7 +2545,6 @@ GoMage.TextEditor.prototype = {
         this.addTextTextarea.observe('keyup', function (e) {
             var obj = this.productDesigner.canvas.getActiveObject();
             if (!obj || obj.type != 'text') {
-                console.log("here i am");
                 //@Fahad: we need to create a new textbox here
 
                 var keycode = e.keyCode;
@@ -2564,13 +2616,11 @@ GoMage.TextEditor.prototype = {
                    cmd.exec();
                    this.productDesigner.history.push(cmd);
                    this._changeTextButtonLabel(textObject);
-
                }
             }
 
             //For first case when object created input box
             var obj = this.productDesigner.canvas.getActiveObject();
-            console.log(obj);
             if (timeout != 'undefined' || timeout != null) {
                 clearTimeout(timeout);
             }
@@ -2947,58 +2997,16 @@ monogramTranslate: function(text){
         }
     },
 
-    /*By Raj*/
-    _convertMonoToSimpleText: function (textObj){
-        var font = (textObj.fontFamily);
-        var text = (textObj.text);
-        /* monogram helper functions */
-        var characterMap= {
-            '1': 'a',
-            '2': 'b',
-            '3': 'c',
-            '4': 'd',
-            '5': 'e',
-            '6': 'f',
-            '7': 'g',
-            '8': 'h',
-            '9': 'i',
-            '0': 'j',
-            '!': 'k',
-            '@': 'l',
-            '#': 'm',
-            '$': 'n',
-            '%': 'o',
-            '^': 'p',
-            '&': 'q',
-            '*': 'r',
-            '(': 's',
-            ')': 't',
-            '-': 'u',
-            '=': 'v',
-            '{': 'w',
-            '}': 'x',
-            '\\': 'y',
-            ':': 'z'
-        }
-
-        var lastChar = text[text.length -1];
-        var translatedChar = (characterMap[lastChar]!=undefined) ? characterMap[lastChar]: '';
-        var newString = text.slice(0, 2)+ translatedChar;
-        return newString.toLowerCase();
-    },
-
     _setInputValues: function (textObj) {
-        //check if its mono text circle
         var font = (textObj.fontFamily);
         var fontNameLower = font.toLowerCase();
-
         this._changeTextButtonLabel(textObj);
         for (var property in this.fieldsMap) {
             if (this.fieldsMap.hasOwnProperty(property) && this.fieldsMap[property]) {
                 var field = this.fieldsMap[property];
                 var objText = textObj[property];
                 if(property==='text' && fontNameLower == 'circle-monograms-three-white-alt'){
-                    objText = this._convertMonoToSimpleText(textObj);
+                    objText = _convertMonoToSimpleText(textObj); 
                 }
                 field.value = textObj ? objText : this.defaultTextOpt[property];
             }
@@ -3006,14 +3014,13 @@ monogramTranslate: function(text){
 
         //Add selectboxit plugin for the text - april 2018
         if(textObj && textObj.type=='text'){
-            console.log(textObj.fontSize);
             //Selectbox font-family
-            //var selectBoxFontFamily = jQuery("#font-selector").selectBoxIt().data("selectBoxIt");
-            //selectBoxFontFamily.selectOption((textObj.fontFamily).toString());
-
+            jQuery("#font-selector").val((textObj.fontFamily).toString());
+            jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").refresh();
+            
             //Selectbox fontSize
-            //var selectBoxFontSize = jQuery("#font_size_selector").selectBoxIt().data("selectBoxIt");
-            //selectBoxFontSize.selectOption((textObj.fontSize).toString());
+            jQuery("#font_size_selector").val((textObj.fontSize).toString());
+            jQuery("#font_size_selector").selectBoxIt().data("selectBox-selectBoxIt").refresh();
         }
 
         if (textObj) {
