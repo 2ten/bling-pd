@@ -2507,6 +2507,7 @@ GoMage.TextEditor.prototype = {
 
             timeout = setTimeout(function () {
                 var elem = e.target || e.srcElement;
+                console.log(elem.value);
                 if (!elem.value) {
                     this.productDesigner.layersManager.removeById(obj.get('uid'));
                     return;
@@ -2906,12 +2907,16 @@ monogramTranslate: function(text){
 
         var fontNameLower = font.toLowerCase();
         if(fontNameLower == 'circle-monograms-three-white-alt'){
+            console.log('unTrans');
             var lastChar = text[text.length -1];
             var translatedChar = (characterMap[lastChar]!=undefined) ? characterMap[lastChar]: '';
             var newString = text.slice(0, 2)+ translatedChar;
-            return newString.toLowerCase();
+            return newString.toUpperCase();
+        }else{
+            console.log('pass');
+           return text; 
         }
-        return false;
+        
     },
 
     _setInputValues: function (textObj) {
@@ -2925,28 +2930,31 @@ monogramTranslate: function(text){
 
                 var field = this.fieldsMap[property];
 
-                if(property == 'fontFamily'){
+                var objText = textObj[property];
+                if(property==='text'){
+                    objText = this._convertMonoToSimpleText(textObj);
+                    field.value = textObj ? objText : this.defaultTextOpt[property];
+                }else{
 
-                    fontFamilyValue = textObj ? textObj[property]  : this.defaultTextOpt[property];
-                    jQuery("#font-selector").val(fontFamilyValue).change();
-                    
+                    field.value = textObj ? textObj[property] : this.defaultTextOpt[property];
+
+                    if(property == 'fontFamily'){
+
+console.log('isMono: ' . isObjectMonoType);
+                        var selectBox = jQuery("#font-selector").data("selectBox-selectBoxIt");
+                        selectBox.refresh();
+
+                    }
+
+                    if(property == 'fontSize'){
+
+                        var selectBoxSize = jQuery("#font_size_selector").data("selectBox-selectBoxIt");
+                        selectBoxSize.refresh();
+
+                    }
+
                 }
-
-                if(property == 'fontSize'){
-
-                    fontSizeValue = textObj ? textObj[property]  : this.defaultTextOpt[property];
-                    jQuery("#font_size_selector").val(fontSizeValue).change();
-
-                }
-
-                field.value = textObj ? textObj[property] : this.defaultTextOpt[property];
-
                 
-                // var objText = textObj[property];
-                // if(property==='text'){
-                //     objText = this._convertMonoToSimpleText(textObj);
-                // }
-                // field.value = textObj ? objText : this.defaultTextOpt[property];
             }
         }
 
