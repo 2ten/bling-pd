@@ -201,12 +201,6 @@ margin-right:auto;
 	font-family: inherit!important;
 }
 
-/* mmc adding */
-.input-monogram{
-	width:150px!important;
-	text-transform: uppercase;
-}
-
 </style>
 <!--End-->
 
@@ -1115,7 +1109,26 @@ display:block;
 
 
 
+<!-- mmc 2ten monogram declare the monogram fonts -->
+<style type="text/css">
 
+    @font-face{font-family:Circle3;src:url("http://localhost/bling-pd-master/fonts/Circle Monograms Three White Alt.ttf")}
+
+    @font-face{font-family:Circle2;src:url("http://localhost/bling-pd-master/fonts/Circle Monograms Two White.ttf")}
+
+    @font-face{font-family:Monoscript;src:url("http://localhost/bling-pd-master/fonts/monogram kk sc.ttf")}
+
+</style>
+
+<!-- mmc 2ten monogram these are the text/monogram tabs -->
+<div class="subtab-nav" id="subtab-nav">
+    <button class="subtab-nav__button active" id="subtab_text"><span><span>Text</span></span></button>
+    <!--<button class="subtab-nav__button" id="subtab_monogram"><span><span>Monogram</span></span></button>-->
+</div>
+<div class="subtab-wrap">
+    <div class="subtab subtab-text" id="subtab_text-content">
+
+<!-- native text tab here -->
 
 
 <style type="text/css">
@@ -1162,8 +1175,7 @@ display:block;
       <div class="pd-text-font-left">
           <input type="hidden" name="design_type" id="design_type" value="text" />
         <select class="font-picker pd-select" id="font-selector" >
-                 
-                 	<option value="Arial">Select Font</option>
+                                 
                     <option value="Tangerine">Tangerine</option>
         
                          
@@ -1178,14 +1190,17 @@ display:block;
                          
                     <option value="Nimbus Roman No9 L">Nimbus Roman No9 L</option>
         
-                    
+                         
                     <option value="Liberation Sans">Liberation Sans</option>
- 
-                         	<option disabled>─────  Monograms  ─────</option>
-                                <option value="Circle-Monograms-Three-White-Alt">3 Letter Circle Monogram</option>
+        
+                         
+                                <option value="Circle-Monograms-Three-White-Alt">Circle-Monograms-Three-White-Alt</option>
+                    
+                         
                                 <option value="Circle-Monograms-Two-White">Circle-Monograms-Two-White</option>
+                    
+                         
                                 <option value="monogram-kk-sc">monogram-kk-sc</option>
-                           
                     
                 </select>
       </div>
@@ -1307,12 +1322,149 @@ display:block;
     }
 </script>
 
+
+    </div>
+      <!-- mmc 2ten monogram subtab here -->
+      <div class="subtab subtab-monogram" id="subtab_monogram-content">
+          <!-- ************ Monogram tab ************** -->
+          <style>
+              .monogram-options{
+              }
+              .monogram-options ul{
+                  margin:0;
+                  padding:5px 0;
+              }
+              .monogram-options li{
+                  display:inline-block;
+                  margin-right:5px;
+              }
+              .monogram-options a{
+                  display:block;
+                  background:gray;
+                  color:white;
+                  padding:0 3px;
+              }
+              .monogram-options a.active{
+                  background:red;
+              }
+              .monogram-input{
+              }
+              .monogram-validation{
+                  display:inline;
+                  padding-left:7px;
+              }
+              .subtab{
+                  display:none;
+              }
+              .subtab:first-child{
+                  display:block;
+              }
+              .subtab-nav button.active{
+                  background: white;
+                  color:#636363;
+              }
+              .subtab-nav li{
+                  display:inline-block;
+                  padding:10px;
+              }
+              .subtab-nav{
+                padding: 5px 7px 0 7px;
+                margin-bottom: 10px;
+                margin: -7px -7px 10px -7px;
+                background: #ededed;           
+              }
+              .subtab-nav__button {
+                  border: solid 1px #ddd;
+                  border-radius: 0;
+                  padding: 6px 17px;
+                  margin-right: 0px;
+                  border-bottom: none;
+                  background: transparent;
+                  background: rgba(255,255,255,0);
+                  border-radius: 3px 3px 0 0;
+                  font-size: 13px;
+                  color:#888;
+              }
+
+          </style>
+
+
+          <!-- mmc 2ten monogram looks for clicks on circle3 circle2 buttons -->
+          <script>
+                      // sets font_code value based on user selection
+                      $j('document').ready(function() {
+
+                          $j('.js-monogram-font').on('click touchstart', function() {
+                              console.log('click');
+                              // clear canvas
+                              window.pd.canvas.clear();
+
+                              // clear form fields
+                              $j('#monogram_text').val('');
+                              $j('#add_text_textarea').val('');
+
+                              $j('.js-monogram-font').removeClass('active');
+                              $j(this).addClass('active');
+                              var font_code = $j(this).data('font-code');
+                              $j('#font_code').val(font_code);
+                          })
+
+
+                          // $j('.subtab-nav li').on('click',function(){
+                          //  var activeTab = $j(this).data('tab');
+                          //  $j('.subtab').hide();
+                          //  $j(activeTab).show();
+                          // })
+                      })
+
+          </script>
+
+          <!-- mmc 2ten monogram buttons to select type of monogram font -->
+          <!-- 
+
+          - buttons for user to select the mongram font
+
+          user can select
+          - circle monogram 2 characters or 3
+          - script monogram 1-3 characters
+
+          upon selection form field font_code must be changed
+
+          -->
+          <div class="monogram-options">
+              <ul>
+                  <li><a href="#" data-font-code="30A" class="js-monogram-font">Circle3</a></li>
+                  <li><a href="#" data-font-code="32A" class="js-monogram-font">Circle2</a></li>
+                  <li><a href="#" data-font-code="1" class="js-monogram-font">Monoscript</a></li>
+              </ul>
+          </div>
+          <div class="monogram-input">
+              <!-- this is the monogram text input 
+
+              removed this class class="pd-textarea" 
+              -->
+              <input type="text" id="monogram_text"
+                     placeholder="Enter text here" 
+                     maxlength="3" style="width:80px!important;"/>
+              <p class="monogram-validation">1-3 Chars</p>
+          </div>
+
+
+          <!-- ************ Monogram tab end ************** -->
+
+      </div>
+    </div>
+
+
+
+
+
+
+
                                       
                                   </div>
                               </div>
-                                                                       
-
-                           </div>
+                                                                          </div>
                       <!-- End Of Product Designer Tabs -->
                   </div>
             </div>
