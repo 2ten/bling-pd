@@ -2418,23 +2418,23 @@ GoMage.TextEditor.prototype = {
                 var isObjectMonoType = false;
                 var elem = jQuery(this).val();
                 if(elem == 'Circle-Monograms-Three-White-Alt'){
-                    jQuery("#add_text_textarea").attr("maxlength",3);
+                    jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');
                     jQuery('#font_code').val("30A");
                     jQuery("#add_text_textarea").val("");
                     isObjectMonoType = true;
                     
                 }else if(elem == 'Circle-Monograms-Two-White'){
-                    jQuery("#add_text_textarea").attr("maxlength",2);
+                    jQuery("#add_text_textarea").attr("maxlength",2).addClass('input-monogram');
                     jQuery('#font_code').val("32A");
                     jQuery("#add_text_textarea").val("");
                     isObjectMonoType = true;
                 }else if(elem == 'monogram-kk-sc'){
-                    jQuery("#add_text_textarea").attr("maxlength",3);
+                    jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');
                     jQuery('#font_code').val("1");
                     jQuery("#add_text_textarea").val("");
                     isObjectMonoType = true;
                 }else{
-                    jQuery("#add_text_textarea").removeAttr("maxlength");
+                    jQuery("#add_text_textarea").removeAttr("maxlength").removeClass('input-monogram');
                     isObjectMonoType = false;
                 }
 
@@ -2448,7 +2448,7 @@ GoMage.TextEditor.prototype = {
                         var cmd = new TransformCommand(window.pd.canvas, obj, {fontFamily: elem});
                         cmd.exec();
 
-                        //centralise object after choosing font style
+                        // Raj centralise object after choosing font style
                         obj.center();
                         obj.setCoords();
                         c.calcOffset();
@@ -3008,6 +3008,7 @@ monogramTranslate: function(text){
                 var field = this.fieldsMap[property];
                 var objText = textObj[property];
                 if(property==='text' && fontNameLower == 'circle-monograms-three-white-alt'){
+                    console.log('yo');
                     objText = _convertMonoToSimpleText(textObj); 
                 }
                 field.value = textObj ? objText : this.defaultTextOpt[property];
