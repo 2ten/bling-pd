@@ -60,6 +60,7 @@ var ProductDesignerGlobalEval = function ProductDesignerGlobalEval(src) {
 
 /*By Raj*/
 _convertMonoToSimpleText =  function (textObj){
+
     var font = (textObj.fontFamily);
     var text = (textObj.text);
     /* monogram helper functions */
@@ -92,22 +93,29 @@ _convertMonoToSimpleText =  function (textObj){
         ':': 'z'
     }
 
-    var newString = ""; 
-    if(text.length===1){
-        var isSpecialChar = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(text);
-        var isnum = /^\d+$/.test(text);
-        if(isnum || isSpecialChar){
-            translatedChar = (characterMap[text]!=undefined) ? characterMap[text]: '';
+    var fontNameLower = font.toLowerCase();
+    if(fontNameLower == 'circle-monograms-three-white-alt'){
+
+        var newString = ""; 
+        if(text.length===1){
+            var isSpecialChar = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(text);
+            var isnum = /^\d+$/.test(text);
+            if(isnum || isSpecialChar){
+                translatedChar = (characterMap[text]!=undefined) ? characterMap[text]: '';
+            }else{
+                translatedChar = text;
+            }
+            newString = translatedChar;
         }else{
-            translatedChar = text;
+            var lastChar = text[text.length -1];
+            var translatedChar = (characterMap[lastChar]!=undefined) ? characterMap[lastChar]: '';
+            newString = text.slice(0, (text.length -1))+ translatedChar;
         }
-        newString = translatedChar;
+        return newString.toLowerCase();
     }else{
-        var lastChar = text[text.length -1];
-        var translatedChar = (characterMap[lastChar]!=undefined) ? characterMap[lastChar]: '';
-        newString = text.slice(0, (text.length -1))+ translatedChar;
+        return text;
     }
-    return newString.toLowerCase();
+
 
 };
 
@@ -2417,24 +2425,26 @@ GoMage.TextEditor.prototype = {
             "change": function(ev, obj) {
                 var isObjectMonoType = false;
                 var elem = jQuery(this).val();
+                var textBox =  jQuery("#add_text_textarea");
                 if(elem == 'Circle-Monograms-Three-White-Alt'){
-                    jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');
+                    textBox.attr("maxlength",3).attr("placeholder","3 Characters").addClass('input-monogram').val("");
                     jQuery('#font_code').val("30A");
-                    jQuery("#add_text_textarea").val("");
+                    jQuery('#character-limit').hide();
                     isObjectMonoType = true;
                     
                 }else if(elem == 'Circle-Monograms-Two-White'){
-                    jQuery("#add_text_textarea").attr("maxlength",2).addClass('input-monogram');
+                    textBox.attr("maxlength",2).attr("placeholder","2 Characters").addClass('input-monogram').val("");
                     jQuery('#font_code').val("32A");
-                    jQuery("#add_text_textarea").val("");
+                    jQuery('#character-limit').hide();
                     isObjectMonoType = true;
                 }else if(elem == 'monogram-kk-sc'){
-                    jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');
+                    textBox.attr("maxlength",3).attr("placeholder","1-3 Characters").addClass('input-monogram').val("");
                     jQuery('#font_code').val("1");
-                    jQuery("#add_text_textarea").val("");
+                    jQuery('#character-limit').hide();
                     isObjectMonoType = true;
                 }else{
-                    jQuery("#add_text_textarea").removeAttr("maxlength").removeClass('input-monogram');
+                    jQuery("#add_text_textarea").removeAttr("maxlength").removeClass('input-monogram').attr("placeholder","Enter text here");
+                    jQuery('#character-limit').show();
                     isObjectMonoType = false;
                 }
 
@@ -2999,7 +3009,37 @@ monogramTranslate: function(text){
         }
     },
 
+    _changeTextArea(font){
+
+        var fontNameLower = font.toLowerCase();
+        var textBox =  jQuery("#add_text_textarea");
+        if(font == 'circle-monograms-three-white-alt'){
+            textBox.attr("maxlength",3).attr("placeholder","3 Characters").addClass('input-monogram').val("");
+            jQuery('#font_code').val("_");
+            jQuery('#character-limit').hide();
+            isObjectMonoType = true;
+            
+        }else if(font == 'circle-monograms-two-white'){
+            textBox.attr("maxlength",2).attr("placeholder","2 Characters").addClass('input-monogram').val("");
+            jQuery('#font_code').val("32A");
+            jQuery('#character-limit').hide();
+            isObjectMonoType = true;
+        }else if(font == 'monogram-kk-sc'){
+            textBox.attr("maxlength",3).attr("placeholder","1-3 Characters").addClass('input-monogram').val("");
+            jQuery('#font_code').val("1");
+            jQuery('#character-limit').hide();
+            isObjectMonoType = true;
+        }else{
+            textBox.removeAttr("maxlength").removeClass('input-monogram').attr("placeholder","Enter text here");
+            jQuery('#character-limit').show();
+            isObjectMonoType = false;
+        }
+        return isObjectMonoType;
+
+    },
+
     _setInputValues: function (textObj) {
+        console.log('SET');
         var font = (textObj.fontFamily);
         var fontNameLower = font.toLowerCase();
         this._changeTextButtonLabel(textObj);
@@ -3008,7 +3048,10 @@ monogramTranslate: function(text){
                 var field = this.fieldsMap[property];
                 var objText = textObj[property];
                 if(property==='text' && fontNameLower == 'circle-monograms-three-white-alt'){
-                    objText = _convertMonoToSimpleText(textObj); 
+                    objText = _convertMonoToSimpleText(textObj);
+                }
+                if(property==='text'){
+                    this._changeTextArea(fontNameLower);
                 }
                 field.value = textObj ? objText : this.defaultTextOpt[property];
             }
@@ -3016,6 +3059,7 @@ monogramTranslate: function(text){
 
         //Add selectboxit plugin for the text - april 2018
         if(textObj && textObj.type=='text'){
+
             //Selectbox font-family
             jQuery("#font-selector").val((textObj.fontFamily).toString());
             jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").refresh();

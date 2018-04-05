@@ -203,8 +203,38 @@ margin-right:auto;
 
 /* mmc adding */
 .input-monogram{
-	width:150px!important;
+	width:120px!important;
 	text-transform: uppercase;
+	padding-right:7px!important;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  text-transform: none!important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  text-transform: none!important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  text-transform: none!important;
+}
+:-moz-placeholder { /* Firefox 18- */
+  text-transform: none!important;
+}
+
+.pd_sides_list{
+	margin-bottom:3px;
+}
+.pd_sides_list li{
+	margin:0;
+}
+.pd_sides_list li:first-child span.product-image{
+	border-radius: 4px 0 0 4px;
+}
+.pd_sides_list li:last-child span.product-image{
+	border-radius: 0 4px 4px 0;
+}
+span.product-image {
+    border: none;
+    background:#ececec;
 }
 
 </style>
@@ -1036,7 +1066,7 @@ display:block;
         settings.isDesignedEnabled = 0;
         settings.isTextEnabled = 1;
         settings.isUploadImageEnabled = 0;
-        settings.product = {"images":{"none_color":{"186160":{"t":205,"l":137,"w":132,"h":132,"image_id":"186160","ip":"0","form_key":"nRF3vBF2ya5FQHoT","id":"186160","u":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/400x400\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-front_1.jpg","d":[400,400],"orig_image":{"url":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/680x800\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-front_1.jpg","dimensions":["680","800"]},"ico":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/60x60\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-front_1.jpg","label":"Front"},"186161":{"t":200,"l":120,"w":164,"h":164,"image_id":"186161","ip":"5","form_key":"nRF3vBF2ya5FQHoT","id":"186161","u":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/400x400\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-back_1.jpg","d":[400,400],"orig_image":{"url":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/680x800\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-back_1.jpg","dimensions":["680","800"]},"ico":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/60x60\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-back_1.jpg","label":"Back"}}},"default_color":"none_color","url":"http:\/\/dev.blingjewelry.com\/catalog\/product\/view\/id\/23496\/s\/gomage-test\/","name":"GoMage Test"};
+        settings.product = {"images":{"none_color":{"186160":{"t":205,"l":137,"w":132,"h":132,"image_id":"186160","ip":"0","form_key":"nRF3vBF2ya5FQHoT","id":"186160","u":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/400x400\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-front_1.jpg","d":[400,400],"orig_image":{"url":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/680x800\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-front_1.jpg","dimensions":["680","800"]},"ico":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/60x60\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-front_1.jpg","label":"Front","monogram":"true"},"186161":{"t":200,"l":120,"w":164,"h":164,"image_id":"186161","ip":"5","form_key":"nRF3vBF2ya5FQHoT","id":"186161","u":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/400x400\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-back_1.jpg","d":[400,400],"orig_image":{"url":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/680x800\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-back_1.jpg","dimensions":["680","800"]},"ico":"http:\/\/dev.blingjewelry.com\/media\/catalog\/product\/cache\/1\/base_image\/60x60\/17f82f742ffe127f42dca9de82fb58b1\/b\/l\/bling-eng-sample-back_1.jpg","label":"Back","monogram":"false"}}},"default_color":"none_color","url":"http:\/\/dev.blingjewelry.com\/catalog\/product\/view\/id\/23496\/s\/gomage-test\/","name":"GoMage Test"};
         settings.container = $("pd_container");
 
         window.pd = new GoMage.ProductDesigner(settings,
@@ -1163,7 +1193,7 @@ display:block;
           <input type="hidden" name="design_type" id="design_type" value="text" />
         <select class="font-picker pd-select" id="font-selector" >
                  
-                 	<option value="Arial">Select Font</option>
+                 	<option value="Arial" disabled="disabled" selected="selected">Select Font</option>
                     <option value="Tangerine">Tangerine</option>
         
                          
@@ -1181,10 +1211,10 @@ display:block;
                     
                     <option value="Liberation Sans">Liberation Sans</option>
  
-                         	<option disabled>─────  Monograms  ─────</option>
-                                <option value="Circle-Monograms-Three-White-Alt">3 Letter Circle Monogram</option>
-                                <option value="Circle-Monograms-Two-White">Circle-Monograms-Two-White</option>
-                                <option value="monogram-kk-sc">monogram-kk-sc</option>
+<option disabled>─────  Monograms  ─────</option>
+<option value="Circle-Monograms-Three-White-Alt">3 Letter Circle Monogram</option>
+<option value="Circle-Monograms-Two-White">2 Letter Circle Monogram</option>
+<option value="monogram-kk-sc">Script Monogram</option>
                            
                     
                 </select>
@@ -1274,9 +1304,9 @@ display:block;
         <canvas height="69" width="290" id="color" class="color-picker"></canvas>
     </div>
     <div class="pd-element-wrapper pd-custom-text-wrapper">
-        
-                    <input type="text" id="add_text_textarea"  class="pd-textarea" placeholder="Enter text here" />
-            </div>
+        <div id="character-limit">20 chars</div>
+              <input type="text" id="add_text_textarea"  class="pd-textarea" placeholder="Enter text here" maxlength="20" />
+        </div>
     <div class="pd-element-wrapper pd-add-text-actions">
         <button id="add_text_button" class="pd-btn pd-btn-add-text">Add Text</button>
 
