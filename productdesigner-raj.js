@@ -122,6 +122,8 @@ GoMage.ProductDesigner = function (config, continueUrl, loginUrl, registrationUr
     this._toggleControlsButtons();
     this._toggleHistoryButtons();
 
+    this.observeSubTabs(); // mmc 2ten monogram sub tabs
+
 }
 
 GoMage.ProductDesigner.prototype = {
@@ -193,7 +195,6 @@ GoMage.ProductDesigner.prototype = {
     upperCaseLastLetter: function (vm, initials) {
         if (initials.length === 1) {
             return (
-                //initials[0].toLowerCase()
                 initials[0].toUpperCase()
             );
         }else if (initials.length === 2) {
@@ -228,7 +229,8 @@ GoMage.ProductDesigner.prototype = {
             );
         }else if (initials.length === 2) {
             return (
-                initials[0].toLowerCase() + vm.characterMap[initials[1].toLowerCase()]
+                initials[0].toLowerCase() +
+                vm.characterMap[initials[1].toLowerCase()]
             );
         }else if (initials.length === 1) {
             return (
@@ -574,6 +576,57 @@ GoMage.ProductDesigner.prototype = {
                     tabContentElement.setStyle({display: 'block'});
                 }
             }
+        }.bind(this));
+    },
+    // mmc 2ten monogram added for text/monogram tab switching
+    observeSubTabs: function () {
+        $('subtab-nav').childElements().invoke('observe', 'click', function (e) {
+
+
+            var elm = e.target || e.srcElement;
+            elm = elm.up('button.subtab-nav__button') || elm;
+            elm.siblings().invoke('removeClassName', 'active');
+            elm.addClassName('active');
+            var buttonId = elm.id;
+            var tabContentElement = $(buttonId + '-content');
+
+            // clear canvas
+            for (var canvas in this.containerCanvases) {
+                this.containerCanvases[canvas].clear();
+            }
+
+            // clear form fields
+            jQuery('#monogram_text').val('');
+            jQuery('#add_text_textarea').val('');
+
+            if (tabContentElement) {
+                // if (buttonId == 'pd_add_text') {
+                //     var event = document.createEvent('Event');
+                //     event.initEvent('textTabShow', true, true);
+                //     document.dispatchEvent(event);
+                // }
+                tabContentElement.siblings().invoke('setStyle', {display: 'none'});
+
+                // mmc not sure the event stuff here is needed
+                if (buttonId == 'subtab_text') {
+                    jQuery('#design_type').val("text");
+                    
+                    document.getElementById("add_text_textarea").maxLength = 10; // todo get from real settings reset maxlen 
+                    // mmc 2ten if this is removed, works if don't interact with monogram form field
+                    // mmc 2ten todo decide if this is necessary
+                    var event = document.createEvent('Event');
+                    event.initEvent('textTabShow', true, true);
+                    document.dispatchEvent(event);
+                    //GoMage.TextEditor.prototype.observeMonogramTab();
+                } else if (buttonId == 'subtab_monogram') { // mmc 2ten todo changed
+                    jQuery('#design_type').val("monogram");
+                }
+
+                if (tabContentElement.getStyle('display') == 'none') {
+                    tabContentElement.setStyle({display: 'block'});
+                }
+            }
+
         }.bind(this));
     },
     //@Fahad: function to resize the current canvas based on the window size and canvas product size and current view
@@ -2303,22 +2356,23 @@ GoMage.TextEditor.prototype = {
                 var isObjectMonoType = false;
                 var elem = jQuery(this).val();
                 if(elem == 'Circle-Monograms-Three-White-Alt'){
-                    jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');
+                    jQuery("#add_text_textarea").attr("maxlength",3);
                     jQuery('#font_code').val("30A");
                     jQuery("#add_text_textarea").val("");
                     isObjectMonoType = true;
+                    
                 }else if(elem == 'Circle-Monograms-Two-White'){
-                    jQuery("#add_text_textarea").attr("maxlength",2).addClass('input-monogram');
+                    jQuery("#add_text_textarea").attr("maxlength",2);
                     jQuery('#font_code').val("32A");
                     jQuery("#add_text_textarea").val("");
                     isObjectMonoType = true;
                 }else if(elem == 'monogram-kk-sc'){
-                    jQuery("#add_text_textarea").attr("maxlength",3).addClass('input-monogram');;
+                    jQuery("#add_text_textarea").attr("maxlength",3);
                     jQuery('#font_code').val("1");
                     jQuery("#add_text_textarea").val("");
                     isObjectMonoType = true;
                 }else{
-                    jQuery("#add_text_textarea").removeAttr("maxlength").removeClass('input-monogram');
+                    jQuery("#add_text_textarea").removeAttr("maxlength");
                     isObjectMonoType = false;
                 }
 
@@ -2326,6 +2380,7 @@ GoMage.TextEditor.prototype = {
                 if (obj && obj.type == 'text') {
                     var cmd = new TransformCommand(window.pd.canvas, obj, {fontFamily: elem});
                     cmd.exec();
+
                     if(isObjectMonoType){
                         var c = window.pd.canvas;
                         c.remove(obj);
@@ -2337,15 +2392,15 @@ GoMage.TextEditor.prototype = {
             }
         });
         //No longer needed this as we now have binded the selectBoxIt dropdown's change event
-        // this.fontSelector.observe('change', function (e) {
-        //     var elem = e.target || e.srcElement;
-        //     var obj = this.productDesigner.canvas.getActiveObject();
-        //     if (obj && obj.type == 'text') {
-        //         var cmd = new TransformCommand(this.productDesigner.canvas, obj, {fontFamily: elem.value});
-        //         cmd.exec();
-        //         this.productDesigner.history.push(cmd);
-        //     }
-        // }.bind(this));
+        this.fontSelector.observe('change', function (e) {
+            var elem = e.target || e.srcElement;
+            var obj = this.productDesigner.canvas.getActiveObject();
+            if (obj && obj.type == 'text') {
+                var cmd = new TransformCommand(this.productDesigner.canvas, obj, {fontFamily: elem.value});
+                cmd.exec();
+                this.productDesigner.history.push(cmd);
+            }
+        }.bind(this));
     },
 
     getTextColor: function () {
@@ -2440,7 +2495,8 @@ GoMage.TextEditor.prototype = {
                     var text = this.addTextTextarea.value;
                    // mmc 2ten monogram todo function that processes test thru correct filter if isMonogram
                    var textObjectData = {
-                       fontSize: parseInt(this.fontSizeSelector.value),
+                       //fontSize: parseInt(this.fontSizeSelector.value),
+                       fontSize: 75,
                        fontFamily: this.fontSelector.value,
                        lineHeight: 1,
                        hasControls: $j('#pd_container').data('has-controls'),
@@ -2507,7 +2563,6 @@ GoMage.TextEditor.prototype = {
 
             timeout = setTimeout(function () {
                 var elem = e.target || e.srcElement;
-                console.log(elem.value);
                 if (!elem.value) {
                     this.productDesigner.layersManager.removeById(obj.get('uid'));
                     return;
@@ -2907,59 +2962,28 @@ monogramTranslate: function(text){
 
         var fontNameLower = font.toLowerCase();
         if(fontNameLower == 'circle-monograms-three-white-alt'){
-            console.log('unTrans');
             var lastChar = text[text.length -1];
             var translatedChar = (characterMap[lastChar]!=undefined) ? characterMap[lastChar]: '';
             var newString = text.slice(0, 2)+ translatedChar;
-            return newString.toUpperCase();
-        }else{
-            console.log('pass');
-           return text; 
+            return newString.toLowerCase();
         }
-        
+        return false;
     },
 
     _setInputValues: function (textObj) {
-
-        // mmc 2ten todo - try to reset the other side to a default
-        // on the first click to that side
         this._changeTextButtonLabel(textObj);
         for (var property in this.fieldsMap) {
-
             if (this.fieldsMap.hasOwnProperty(property) && this.fieldsMap[property]) {
-
                 var field = this.fieldsMap[property];
-
                 var objText = textObj[property];
                 if(property==='text'){
                     objText = this._convertMonoToSimpleText(textObj);
-                    field.value = textObj ? objText : this.defaultTextOpt[property];
-                }else{
-
-                    field.value = textObj ? textObj[property] : this.defaultTextOpt[property];
-
-                    if(property == 'fontFamily'){
-
-console.log('isMono: ' + isObjectMonoType);
-                        var selectBox = jQuery("#font-selector").data("selectBox-selectBoxIt");
-                        selectBox.refresh();
-
-                    }
-
-                    if(property == 'fontSize'){
-
-                        var selectBoxSize = jQuery("#font_size_selector").data("selectBox-selectBoxIt");
-                        selectBoxSize.refresh();
-
-                    }
-
                 }
-                
+                field.value = textObj ? objText : this.defaultTextOpt[property];
             }
         }
 
         if (textObj) {
-
             this.changeControlState(this.addTextBtnBold, textObj.get('fontWeight') == 'bold');
             this.changeControlState(this.addTextBtnItalic, textObj.get('fontStyle') == 'italic');
             this.changeControlState(this.addTextBtnUnderline, textObj.get('textDecoration').indexOf('underline') >= 0);
