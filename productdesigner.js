@@ -175,7 +175,7 @@ GoMage.ProductDesigner = function (config, continueUrl, loginUrl, registrationUr
     this._toggleControlsButtons();
     this._toggleHistoryButtons();
 
-    this.observeSubTabs(); // mmc 2ten monogram sub tabs
+    //this.observeSubTabs(); // mmc 2ten monogram sub tabs
 
 }
 
@@ -827,6 +827,8 @@ GoMage.ProductDesigner.prototype = {
                     currentCanvas.setActiveObject(object);
                     var objSimpleText = _convertMonoToSimpleText(object);
                     jQuery("#add_text_textarea").val(objSimpleText);
+                    // mmc 2ten raj this is the original 
+                    // jQuery("#add_text_textarea").val(object.text);
                 }
             });
         }
@@ -2317,7 +2319,7 @@ GoMage.TextEditor = function (defaultFontFamily, defaultFontSize) {
     this.observeOutlineControls();
     this.observeCancelTextEffect();
     this.observeResetSettings();
-    this.observeMonogramTab(); // mmc 2ten monogram
+    // this.observeMonogramTab(); // mmc 2ten monogram
 
     // mmc add new text - simulates clicking on design area which deselects existing elements
     this.deselectButton = $('deselect');
