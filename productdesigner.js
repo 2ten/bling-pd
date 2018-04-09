@@ -60,8 +60,10 @@ var ProductDesignerGlobalEval = function ProductDesignerGlobalEval(src) {
 
 /*By Raj*/
 _convertMonoToSimpleText =  function (textObj){
-    var font = (textObj.fontFamily);
+    var font = (textObj.fontFamily).toLowerCase();
     var text = (textObj.text);
+    if(font!=='circle-monograms-three-white-alt')
+        return text;
     /* monogram helper functions */
     var characterMap= {
         '1': 'a',
@@ -1426,7 +1428,7 @@ GoMage.ProductDesigner.prototype = {
             elem.up('li').addClassName('active');
             elem.up('li').siblings().invoke('removeClassName', 'active');
             //Remove selected objected first before switching to other - By Raj - apr-2018
-            this.deselectAllOnTabSwitch();
+            this.deselectAllOnTabSwitch(e);
             this.changeProductImage(elem.readAttribute('data-id'));
         }.bind(this));
     },
@@ -1446,8 +1448,28 @@ GoMage.ProductDesigner.prototype = {
         }.bind(this));
     },
 
-    deselectAllOnTabSwitch(){
-        this.canvas.deactivateAll().renderAll();
+    disableMonogramFonts(state){
+        jQuery("#font-selector").children().each(function(i,el){
+          var selVal = jQuery(el).val();
+          if(selVal=="Circle-Monograms-Three-White-Alt" || selVal=="Circle-Monograms-Two-White" || selVal=="monogram-kk-sc"){
+            jQuery(el).attr("disabled",state);
+          }
+        });
+        jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").refresh();
+    },
+
+    deselectAllOnTabSwitch(event){
+        //Remove Monogram if the side is back of product
+        if((event.target.innerHTML).toLowerCase() === 'back'){
+            this.disableMonogramFonts(true);
+            jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").destroy();
+            jQuery("#font-selector").val("Tangerine");
+            jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").refresh();
+            jQuery("#add_text_textarea").removeAttr("maxlength");
+        }else{
+            this.disableMonogramFonts(false);
+        }    
+        this.canvas.deactivateAll().renderAll();    
     },
 
     flipXLayer: function () {
