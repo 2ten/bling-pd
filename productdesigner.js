@@ -1479,11 +1479,11 @@ GoMage.ProductDesigner.prototype = {
                 this.disableMonogramFonts(false);    
             }else{
                 this.disableMonogramFonts(true);
-                jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").destroy();
-                jQuery("#font-selector").val("Tangerine");
-                jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").refresh();
-                jQuery("#add_text_textarea").removeAttr("maxlength");  
             }
+            jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").destroy();
+            jQuery("#font-selector").val("Lato");
+            jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").refresh();
+            jQuery("#add_text_textarea").removeAttr("maxlength");  
         }
         //this.canvas.deactivateAll().renderAll();    
     },
