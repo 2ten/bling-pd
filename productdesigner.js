@@ -768,6 +768,9 @@ GoMage.ProductDesigner.prototype = {
             return;
         }
 
+        //Deselect method call 
+        this.deselectAllOnTabSwitch(prod);
+
         // mmc 2ten remove this setting to 100% height and width in css
         // going to use another container to fix the width/height
         // this.container.style.height = parseInt(prod.d[1]) + 'px';
@@ -819,7 +822,6 @@ GoMage.ProductDesigner.prototype = {
             this.containerCanvases[prod.id] = this.canvas;
             this._observeCanvasObjects();
         } else {
-
             var designArea = this.containerLayers[prod.id];
 
             // mmc 2ten note
@@ -843,7 +845,6 @@ GoMage.ProductDesigner.prototype = {
 
         // mmc 2ten position tools over image
         this.positionTools();
-
         this.currentProd = prod.id;
     },
 
@@ -1435,8 +1436,6 @@ GoMage.ProductDesigner.prototype = {
         Event.on($(this.opt.product_side_id), 'click', '.product-image', function (e, elem) {
             elem.up('li').addClassName('active');
             elem.up('li').siblings().invoke('removeClassName', 'active');
-            //Remove selected objected first before switching to other - By Raj - apr-2018
-            this.deselectAllOnTabSwitch();
             this.changeProductImage(elem.readAttribute('data-id'));
         }.bind(this));
     },
@@ -1456,8 +1455,37 @@ GoMage.ProductDesigner.prototype = {
         }.bind(this));
     },
 
-    deselectAllOnTabSwitch(){
-        this.canvas.deactivateAll().renderAll();
+    disableMonogramFonts(state){
+        var isAttrAdded = false;
+        jQuery("#font-selector").children().each(function(i,el){
+          var selVal = jQuery(el).val().toLowerCase();
+          if(selVal=="circle-monograms-three-white-alt" || selVal=="circle-monograms-two-white" || selVal=="monogram-kk-sc"){
+            //console.log("hee"+ isAttrAdded);
+            if(jQuery(el).attr("disabled")!=undefined)
+                isAttrAdded = true;
+
+            jQuery(el).attr("disabled",state);
+          }
+        });
+
+        //Is neccessory to add check for the first time becuase there is no disabled check
+        if(isAttrAdded)
+            jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").refresh();
+    },
+
+    deselectAllOnTabSwitch(productInfo){
+        if(productInfo && Object.keys(productInfo).length>0){
+            if(productInfo.monogram==="true"){
+                this.disableMonogramFonts(false);    
+            }else{
+                this.disableMonogramFonts(true);
+                jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").destroy();
+                jQuery("#font-selector").val("Tangerine");
+                jQuery("#font-selector").selectBoxIt().data("selectBox-selectBoxIt").refresh();
+                jQuery("#add_text_textarea").removeAttr("maxlength");  
+            }
+        }
+        //this.canvas.deactivateAll().renderAll();    
     },
 
     flipXLayer: function () {
@@ -2455,6 +2483,8 @@ GoMage.TextEditor.prototype = {
                         c.remove(obj);
                         c.renderAll();
                     }else{
+                        //Setting up text again to render things perfectly after change other fonts (specially for monograms)
+                        obj.set("text",jQuery("#add_text_textarea").val());
                         var cmd = new TransformCommand(window.pd.canvas, obj, {fontFamily: elem});
                         cmd.exec();
 
